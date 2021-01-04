@@ -12,6 +12,19 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+    return queryInterface.bulkInsert('Genre', [
+      { name: 'Action' }, //1
+      { name: 'Adventure' }, //2
+      { name: 'Animation' }, //3
+      { name: 'Comedy' }, //4
+      { name: 'Crime' }, //5
+      { name: 'Drama' }, //6
+      { name: 'Musical' }, //7
+      { name: 'Mystery' }, //8
+      { name: 'Romance' }, //9
+      { name: 'Sci-Fi' }, //10
+      { name: 'Thriller' }, //11
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -22,5 +35,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
+    return queryInterface.bulkDelete('Genre', null, {});
   }
 };
