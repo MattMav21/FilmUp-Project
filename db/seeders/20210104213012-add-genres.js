@@ -12,7 +12,7 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Genre', [
+    return queryInterface.bulkInsert('Genres', [
       { name: 'Action' }, //1
       { name: 'Adventure' }, //2
       { name: 'Animation' }, //3
@@ -35,6 +35,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('Genre', null, {});
+    return queryInterface.bulkDelete('Genres', null, {});
   }
 };
