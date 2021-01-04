@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    form(action="/signup" method="POST")
+        input(type='hidden' name='_csrf' value=token)
+        input(type='text' name='firstName' placeholder='Enter your first name.' required)
+        input(type='text' name='lastName' placeholder='Enter your last name.' required)
+        input(type='email' name='email' placeholder='Enter your email address.' required)
+        input(type='password' name='password' required)
+        input(type='password' name='confirmPassword' required)
+        button(type='submit') Register
