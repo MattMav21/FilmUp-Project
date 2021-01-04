@@ -7,8 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       unique: true
     }
   }, {});
-  Genre.associate = function(models) {
+  Genre.associate = function (models) {
     // associations can be defined here
+    Genre.hasMany(models.Movie, { foreignKey: 'genreId' })
   };
   return Genre;
 };
