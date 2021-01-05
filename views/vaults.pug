@@ -4,7 +4,11 @@ block content
     table
         thead: tr
             th My Vaults
-        //- tbody
-        //-     each vault in vaults
-        //-         tr
-        //-             td= vault
+        tbody
+            //- each vault in vaults
+            //-     tr
+            //-         td= vault.name
+        form(method="post" action="/vaults")
+            input(type="text" name="name" required)
+            div
+            button(type="submit") Create Vault
