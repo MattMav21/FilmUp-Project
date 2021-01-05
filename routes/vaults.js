@@ -46,4 +46,13 @@ router.post('/', asyncHandler(async (req, res) => {
     await vault.save()
 }))
 
+router.delete('/:id', asyncHandler(async (req, res) => {
+    // We want to target the specific vault
+    const vault = await db.Vault.findByPk(req.params.id)
+    // Remove the vault from the database
+    Vault.remove(vault)
+    // Redirect the user back to the vaults page
+    res.redirect('vaults')
+}))
+
 module.exports = router;
