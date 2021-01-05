@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 const signupRouter = require('./routes/signup');
+const vaultRouter = require('./routes/vaults')
 
 const app = express();
 
@@ -41,6 +42,7 @@ store.sync();
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/signup', signupRouter);
+app.use('/vaults', vaultRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
