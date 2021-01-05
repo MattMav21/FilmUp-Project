@@ -1,9 +1,24 @@
 extends layout
 
 block content
-  div
-    h1 Movies
-     each movie in movies
-      div
+  h1 Movies
+  style.
+    .container {
+      height: 300px;
+      width: 70%;
+      margin: 10px auto;
+      position: relative;
+    }
+
+    .block {
+      height: 250px;
+      width: 200px;
+      float: left;
+      margin: 10px;
+    }
+
+  div.container
+    each movie in movies
+      div.block
         div= movie.title
-        img.poster(src= movie.posterPath)
+        img(src= movie.posterPath width=150 height=200)
