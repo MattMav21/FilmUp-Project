@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    form(action="/login" method="POST")
+        input(type='hidden' name='_csrf' value=token)
+        input(type='email' name='email' placeholder='Enter your email address.' required)
+        input(type='password' name='password' required)
+        button(type='submit') Login
+    div
+        p: a(href="/signup") Don't have an account? Click here to sign up!
