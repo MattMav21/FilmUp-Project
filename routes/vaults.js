@@ -26,4 +26,12 @@ router.get('/', asyncHandler(async (req, res) => {
     res.render('vaults')
 }))
 
+router.get('/:id', asyncHandler(async (req, res) => {
+    // We want to access a specific vault
+    // Likely will need to change this to match the specific vault
+    const vault = await Vault.findByPk(req.params.id)
+    // Then render that specific vault on the page
+    res.render('vault', { vault })
+}))
+
 module.exports = router;
