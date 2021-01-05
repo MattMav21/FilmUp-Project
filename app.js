@@ -11,6 +11,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const signupRouter = require('./routes/signup');
 const loginRouter = require('./routes/login');
+const { restoreUser } = require('./auth');
 
 const app = express();
 
@@ -28,6 +29,7 @@ const store = new SequelizeStore({ db: sequelize });
 
 app.use(
   session({
+    name: 'filmup.sid',
     secret: sessionSecret,
     store,
     saveUninitialized: false,
@@ -38,6 +40,7 @@ app.use(
 // create Session table if it doesn't already exist
 store.sync();
 
+app.use(restoreUser);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/signup', signupRouter);
