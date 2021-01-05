@@ -5,9 +5,9 @@ block content
         thead: tr
             th My Vaults
         tbody
-            //- each vault in vaults
-            //-     tr
-            //-         td= vault.name
+            each vault in vaults
+                tr
+                    td= vault.name
         form(method="post" action="/vaults")
             input(type="text" name="name" required)
             div
