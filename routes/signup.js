@@ -4,6 +4,8 @@ const { csrfProtection, asyncHandler } = require('./utils');
 const { check, validationResult } = require('express-validator');
 const db = require('../db/models');
 
+const bcrypt = require('bcryptjs');
+
 //user validators
 const userValidators = [
     check('email')
@@ -12,7 +14,9 @@ const userValidators = [
         .isLength({ max: 100 })
         .withMessage('Email must not exceed 100 characters.')
         .isEmail()
-        .withMessage('Please provide a valid email address.'),
+        .withMessage('Please provide a valid email address.')
+        // unique email w/ message "Email is already taken"
+        ,
     check('password')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a password.'),
@@ -55,9 +59,19 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async(req, res) =>
         email,
         firstName,
         lastName,
-        hashedPassword: password,
     });
-    await user.save();
+
+    const validatorErrors = validationResult(req);
+
+    if (validatorErrors.isEmpty()) {
+        const hashedPassword = await bcrypt.hash(password, 10);
+        user.hashedPassword = hashedPassword;
+        await user.save();
+    } else {
+        const errors = validatorErrors.array().map((error) => error.msg);
+        res.render('signup', { title: 'Sign Up', user, errors, token: req.csrfToken() })
+    }
+
     res.redirect('/');
 }));
 
