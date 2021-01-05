@@ -12,18 +12,18 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Genre', [
-      { name: 'Action' }, //1
-      { name: 'Adventure' }, //2
-      { name: 'Animation' }, //3
-      { name: 'Comedy' }, //4
-      { name: 'Crime' }, //5
-      { name: 'Drama' }, //6
-      { name: 'Musical' }, //7
-      { name: 'Mystery' }, //8
-      { name: 'Romance' }, //9
-      { name: 'Sci-Fi' }, //10
-      { name: 'Thriller' }, //11
+    return queryInterface.bulkInsert('Genres', [
+      { name: 'Action', createdAt: new Date(), updatedAt: new Date() }, //1
+      { name: 'Adventure', createdAt: new Date(), updatedAt: new Date() }, //2
+      { name: 'Animation', createdAt: new Date(), updatedAt: new Date() }, //3
+      { name: 'Comedy', createdAt: new Date(), updatedAt: new Date() }, //4
+      { name: 'Crime', createdAt: new Date(), updatedAt: new Date() }, //5
+      { name: 'Drama', createdAt: new Date(), updatedAt: new Date() }, //6
+      { name: 'Musical', createdAt: new Date(), updatedAt: new Date() }, //7
+      { name: 'Mystery', createdAt: new Date(), updatedAt: new Date() }, //8
+      { name: 'Romance', createdAt: new Date(), updatedAt: new Date() }, //9
+      { name: 'Sci-Fi', createdAt: new Date(), updatedAt: new Date() }, //10
+      { name: 'Thriller', createdAt: new Date(), updatedAt: new Date() }, //11
     ], {});
   },
 
@@ -35,6 +35,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('Genre', null, {});
+    return queryInterface.bulkDelete('Genres', null, {});
   }
 };

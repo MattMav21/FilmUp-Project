@@ -12,13 +12,15 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
-    return queryInterface.bulkInsert('Movie', [
+    return queryInterface.bulkInsert('Movies', [
       {
         title: 'The Greatest Showman',
         description: `Orphaned, penniless, but ambitious and with a mind crammed with imagination and fresh ideas, the American entertainer, Phineas Taylor Barnum, will always be remembered as the man with the gift to blur the line between reality and fiction. Thirsty for innovation and hungry for success, the son of a tailor manages to open a wax museum; however, he soon shifts focus to the unique and the peculiar, introducing extraordinary, never-seen-before live acts on the circus stage. Now, some people call Barnum's rich collection of oddities, an outright freak show; but, when Phineas, obsessed for cheers and respectability, gambles everything on the opera singer, Jenny Lind, to appeal to a high-brow audience, he will lose sight of the most crucial aspect of his life: his family. Will Barnum, the greatest showman, risk it all to be accepted?`,
         releaseDate: '2017-12-20',
         posterPath: 'https://theposterdb.com/api/assets/41421',
         genreId: 7,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Elf',
@@ -26,6 +28,8 @@ module.exports = {
         releaseDate: '2003-11-7',
         posterPath: 'https://theposterdb.com/api/assets/36128',
         genreId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Pokémon: The Movie 2000',
@@ -33,6 +37,8 @@ module.exports = {
         releaseDate: '2000-7-21',
         posterPath: 'https://theposterdb.com/api/assets/1142',
         genreId: 3,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Heathers',
@@ -40,6 +46,8 @@ module.exports = {
         releaseDate: '1989-3-31',
         posterPath: 'https://theposterdb.com/api/assets/25024',
         genreId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Kill Bill: Vol. 1',
@@ -47,6 +55,8 @@ module.exports = {
         releaseDate: '2003-10-10',
         posterPath: 'https://theposterdb.com/api/assets/31974',
         genreId: 1,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Iron Man',
@@ -54,6 +64,8 @@ module.exports = {
         releaseDate: '2008-5-2',
         posterPath: 'https://theposterdb.com/api/assets/26132',
         genreId: 2,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Boyhood',
@@ -61,6 +73,8 @@ module.exports = {
         releaseDate: '2014-8-15',
         posterPath: 'https://theposterdb.com/api/assets/31208',
         genreId: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: '11:14',
@@ -68,6 +82,8 @@ module.exports = {
         releaseDate: '2004-8-20',
         posterPath: 'https://theposterdb.com/api/assets/47135',
         genreId: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'The Number 23',
@@ -75,6 +91,8 @@ module.exports = {
         releaseDate: '2007-2-23',
         posterPath: 'https://theposterdb.com/api/assets/50016',
         genreId: 11,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Scott Pilgrim vs. the World',
@@ -82,6 +100,8 @@ module.exports = {
         releaseDate: '2010-8-13',
         posterPath: 'https://theposterdb.com/api/assets/14826',
         genreId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Forrest Gump',
@@ -89,6 +109,8 @@ module.exports = {
         releaseDate: '1994-7-6',
         posterPath: 'https://theposterdb.com/api/assets/51002',
         genreId: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Step Brothers',
@@ -96,6 +118,8 @@ module.exports = {
         releaseDate: '2008-7-25',
         posterPath: 'https://theposterdb.com/api/assets/20381',
         genreId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'GoodFellas',
@@ -103,6 +127,8 @@ module.exports = {
         releaseDate: '1990-9-21',
         posterPath: 'https://theposterdb.com/api/assets/47503',
         genreId: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'The Wolf of Wall Street',
@@ -110,6 +136,8 @@ module.exports = {
         releaseDate: '2013-12-25',
         posterPath: 'https://theposterdb.com/api/assets/39150',
         genreId: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Shrek',
@@ -117,6 +145,8 @@ module.exports = {
         releaseDate: '2001-5-18',
         posterPath: 'https://theposterdb.com/api/assets/6162',
         genreId: 3,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: '2001: A Space Odyssey',
@@ -124,6 +154,8 @@ module.exports = {
         releaseDate: '1968-5-12',
         posterPath: 'https://theposterdb.com/api/assets/21636',
         genreId: 10,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'A Clockwork Orange',
@@ -131,6 +163,8 @@ module.exports = {
         releaseDate: '1972-2-2',
         posterPath: 'https://theposterdb.com/api/assets/24697',
         genreId: 5,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Dallas Buyers Club',
@@ -138,6 +172,8 @@ module.exports = {
         releaseDate: '2013-11-22',
         posterPath: 'https://theposterdb.com/api/assets/76010',
         genreId: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb',
@@ -145,6 +181,8 @@ module.exports = {
         releaseDate: '1964-1-29',
         posterPath: 'https://theposterdb.com/api/assets/9901',
         genreId: 4,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         title: 'Fight Club',
@@ -152,6 +190,8 @@ module.exports = {
         releaseDate: '1999-10-15',
         posterPath: 'https://theposterdb.com/api/assets/34059',
         genreId: 6,
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ], {});
   },
@@ -164,6 +204,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return queryInterface.bulkDelete('Movie', null, {});
+    return queryInterface.bulkDelete('Movies', null, {});
   }
 };

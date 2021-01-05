@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     User.hasMany(models.Vault, { foreignKey: 'userId' })
     User.belongsToMany(models.Movie, { foreignKey: 'userId', through: 'WatchedMovies', otherKey: 'movieId' })
-    User.hasMany(models.WatchedMovie, { foreignKey: 'userId' })
+    //User.hasMany(models.WatchedMovie, { foreignKey: 'userId' })
   };
   return User;
 };
