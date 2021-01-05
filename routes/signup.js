@@ -1,10 +1,11 @@
-var express = require('express');
-var router = express.Router();
-const { csrfProtection, asyncHandler } = require('./utils');
+const express = require('express');
 const { check, validationResult } = require('express-validator');
-const db = require('../db/models');
-
 const bcrypt = require('bcryptjs');
+const { csrfProtection, asyncHandler } = require('./utils');
+const db = require('../db/models');
+const { loginUser } = require('../auth');
+
+const router = express.Router();
 
 //user validators
 const userValidators = [
@@ -45,7 +46,6 @@ const userValidators = [
         .withMessage('Last Name must not be more than 50 characters long'),
 ];
 
-
 router.get('/', csrfProtection, (req, res) => {
     //GOAL: renders the signup page.
     const user = db.User.build();
@@ -64,15 +64,18 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async(req, res) =>
     const validatorErrors = validationResult(req);
 
     if (validatorErrors.isEmpty()) {
+
         const hashedPassword = await bcrypt.hash(password, 10);
         user.hashedPassword = hashedPassword;
         await user.save();
+        loginUser(req, res, user);
+        res.redirect('/');
+
     } else {
+
         const errors = validatorErrors.array().map((error) => error.msg);
         res.render('signup', { title: 'Sign Up', user, errors, token: req.csrfToken() })
     }
-
-    res.redirect('/');
 }));
 
 module.exports = router;
