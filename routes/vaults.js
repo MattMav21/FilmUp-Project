@@ -39,17 +39,19 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
     // We want a route for when a user creates a vault
     // We will want to check how many vaults the user has. 
     // If more than ten, they can no longer create new vaults.
-    const user = await db.User.findByPk(req.params.id)
+    const user = await db.User.findOne({ where: { id: req.session.auth.userId } });
     // TODO: Find a way to count how many vaults are associated with a user
-    const vault = await db.Vault.build({
+    const vault = db.Vault.build({
         name: req.body.name,
-        userId: req.body.userId
+        userId: user.id
     })
     await vault.save()
+    res.redirect('/vaults')
 }))
 
 router.delete('/:id', requireAuth, asyncHandler(async (req, res) => {
     // We want to target the specific vault
+    const user = await db.User.findOne({ where: { id: req.session.auth.userId } });
     const vault = await db.Vault.findByPk(req.params.id)
     // Remove the vault from the database
     Vault.remove(vault)
