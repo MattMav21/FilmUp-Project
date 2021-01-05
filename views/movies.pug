@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  div
+    h1 Movies
+     each movie in movies
+      div
+        div= movie.title
+        img.poster(src= movie.posterPath)
