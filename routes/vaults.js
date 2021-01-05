@@ -41,7 +41,8 @@ router.post('/', asyncHandler(async (req, res) => {
     const user = await db.User.findByPk(req.params.id)
     // TODO: Find a way to count how many vaults are associated with a user
     const vault = await db.Vault.build({
-        name: req.name
+        name: req.body.name,
+        userId: req.body.userId
     })
     await vault.save()
 }))
@@ -52,7 +53,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     // Remove the vault from the database
     Vault.remove(vault)
     // Redirect the user back to the vaults page
-    res.redirect('vaults')
+    res.redirect('/')
 }))
 
 module.exports = router;
