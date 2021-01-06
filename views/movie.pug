@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= movie.title
+  img(src= movie.posterPath width=150 height=200)
+  p= movie.description
+  p= movie.releaseDate
+  p= movie.Genre.name
+

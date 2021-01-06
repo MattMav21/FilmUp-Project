@@ -2,23 +2,9 @@ extends layout
 
 block content
   h1 Movies
-  style.
-    .container {
-      height: 300px;
-      width: 70%;
-      margin: 10px auto;
-      position: relative;
-    }
-
-    .block {
-      height: 250px;
-      width: 200px;
-      float: left;
-      margin: 10px;
-    }
-
-  div.container
+  div.movieContainer
     each movie in movies
-      div.block
-        div= movie.title
-        img(src= movie.posterPath width=150 height=200)
+      div.movieBlock
+          a(href=`http://localhost:8080/movies/${movie.id}`)
+            img(src= movie.posterPath width=200 height=250 id= 'moviePoster')
+            div.hiddenDescr Test Description
