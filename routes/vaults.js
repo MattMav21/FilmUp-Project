@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const db = require('../db/models');
 const { asyncHandler } = require('./utils');
 const { requireAuth } = require('../auth')
@@ -29,10 +29,10 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 router.get('/:id', requireAuth, asyncHandler(async (req, res) => {
     // We want to access a specific vault
     // Likely will need to change this to match the specific vault
-    // const vault = await db.Vault.findByPk(req.params.id)
+    const vault = await db.Vault.findByPk(req.params.id)
     // Then render that specific vault on the page
     // res.render('vault', { vault })
-    res.render('vault')
+    res.render('vault', { vault })
 }))
 
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
@@ -49,14 +49,30 @@ router.post('/', requireAuth, asyncHandler(async (req, res) => {
     res.redirect('/vaults')
 }))
 
-router.delete('/:id', requireAuth, asyncHandler(async (req, res) => {
-    // We want to target the specific vault
-    const user = await db.User.findOne({ where: { id: req.session.auth.userId } });
-    const vault = await db.Vault.findByPk(req.params.id)
-    // Remove the vault from the database
-    Vault.remove(vault)
-    // Redirect the user back to the vaults page
-    res.redirect('/')
-}))
+// router.post('/:id/delete', requireAuth, asyncHandler(async (req, res) => {
+//     // We want to target the specific vault
+//     // const vault = await db.Vault.findByPk(req.params.id)
+//     const vault = await db.Vault.findOne({
+//         where: {
+//             id: 3
+//         },
+//     })
+//     // console.log("this is the vault we are logging", vault)
+//     // Remove the vault from the database
+//     await vault.destroy()
+//     // Redirect the user back to the vaults page
+//     res.redirect('/vaults')
+// }))
 
+router.post(/\/\d+/, requireAuth, asyncHandler(async (req, res) => {
+    const id = req.path.split('/')[1]
+    // const vault = await db.Vault.findByPk(id)
+        const vault = await db.Vault.findOne({
+        where: {
+            id: id
+        },
+    })
+    await vault.destroy()
+    res.redirect('/vaults')
+}))
 module.exports = router;
