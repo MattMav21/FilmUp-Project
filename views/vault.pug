@@ -2,10 +2,12 @@ extends layout
 
 block content
     form(method="post" action=`/vaults/${vault.id}`)
-            table
-                thead: tr
-                    th This is my vault!!
-                tbody
-                        tr
-                            td= vault.name
-            button(type="submit" id="delete-vault") Delete Vault
+        h1= vault.name
+        div.movieContainer
+            each movie in movies
+                div.movieBlock
+                    a(href=`http://localhost:8080/movies/${movie.id}`)
+                        h2= movie.title
+                        img(src= movie.posterPath width=150 height=200)
+                
+        button(type="submit" id="delete-vault") Delete Vault
