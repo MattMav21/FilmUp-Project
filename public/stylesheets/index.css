@@ -2,4 +2,26 @@ h1 {
     color: #555555;
 }
 
+.mainContentContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
 
+.description {
+
+}
+
+.recentlyAddedContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.recentlyAddedContainer .movieBlock {
+    height: 150px;
+    width: 100px;
+    margin: 10px;
+}
+
+.moviesByGenre {
+
+}
