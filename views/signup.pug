@@ -1,15 +1,21 @@
 extends layout
 
+include utils.pug
+
 block content
-    include navbar
-    br
+    +validationErrorSummary(errors)
     form(action="/signup" method="POST")
         input(type='hidden' name='_csrf' value=token)
-        input(type='text' name='firstName' placeholder='Enter your first name.' required)
-        input(type='text' name='lastName' placeholder='Enter your last name.' required)
-        input(type='email' name='email' placeholder='Enter your email address.' required)
-        input(type='password' name='password' required)
-        input(type='password' name='confirmPassword' required)
+        label(for="firstName") First Name
+        input(type='text' name='firstName' placeholder='Enter your first name.')
+        label(for="lastName") Last Name
+        input(type='text' name='lastName' placeholder='Enter your last name.')
+        label(for="email") Email
+        input(type='email' name='email' placeholder='Enter your email address.')
+        label(for="password") Password
+        input(type='password' name='password')
+        label(for="confirmPassword") Confirm Password
+        input(type='password' name='confirmPassword')
         button(type='submit') Register
-    div
-        p: a(href="/login") Already have an account? Click here to log in!
+        div
+            p: a(href="/login") Already have an account? Click here to log in!
