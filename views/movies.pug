@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Movies
+  div.movieContainer
+    each movie in movies
+      div.movieBlock
+          a(href=`http://localhost:8080/movies/${movie.id}`)
+            img(src= movie.posterPath width=200 height=250 id= 'moviePoster')
+            div.hiddenDescr Test Description
