@@ -67,6 +67,11 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async(req, res) =>
         const hashedPassword = await bcrypt.hash(password, 10);
         user.hashedPassword = hashedPassword;
         await user.save();
+        // console.log(user)
+        await db.Vault.create({
+            name: 'My Vault',
+            userId: user.id
+        })
         loginUser(req, res, user);
         res.redirect('/');
 
