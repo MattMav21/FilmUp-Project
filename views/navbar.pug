@@ -1,0 +1,21 @@
+doctype html
+html
+    title="FilmUp"
+    link(rel='stylesheet' href='/stylesheets/navbar.css')
+    block head
+body
+    nav(class="top-navbar")
+        a(class="logo" href="/") Logo
+        input(class="search" type='text' name='query' placeholder='search movies')
+        if locals.authenticated
+            span(class='navbar-text px-4') Welcome #{user.firstName}!
+            form(class='form-inline pr-4' action='/logout' method='post')
+                button(class='btn btn-sm btn-warning' type='submit') Logout
+        else
+            span(class='navbar-text px-4')
+            a(class='btn btn-sm btn-dark mr-2' href='/login') Login
+            a(class='btn btn-sm btn-dark' href='/signup') Register
+    nav(class="bottom-navbar")
+        a(class="home buttons" href='/') Home
+        a(class="vaults buttons" href='/') Vaults
+        a(class="browse buttons" href='/') Browse

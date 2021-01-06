@@ -32,8 +32,7 @@ const userValidators = [
                 throw new Error('These passwords do not match!');
             }
             return true;
-        })
-    ,
+        }),
     check('firstName')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a value for First Name')
@@ -79,7 +78,12 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async(req, res) =>
     } else {
 
         const errors = validatorErrors.array().map((error) => error.msg);
-        res.render('signup', { title: 'Sign Up', user, errors, token: req.csrfToken() })
+        res.render('signup', {
+            title: 'Sign Up',
+            user,
+            errors,
+            token: req.csrfToken()
+        });
     }
 }));
 
