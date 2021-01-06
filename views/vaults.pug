@@ -1,14 +1,28 @@
 extends layout
 
 block content
-    table
-        thead: tr
-            th My Vaults
-        tbody
-            each vault in vaults
-                tr
-                    td= vault.name
-        form(method="post" action="/vaults")
+    //- table
+    //-     thead: tr
+    //-         th My Vaults
+    //-     tbody
+    //-         each vault in vaults
+    //-             tr
+    //-                 div.vaultBlock
+    //-                     td= vault.name
+    //-                         a(href=`http://localhost:8080/movies/${vault.id}`)
+    //-     form(method="post" action="/vaults")
+    //-         input(type="text" name="name" required)
+    //-         div
+    //-         button(type="submit") Create Vault
+    form(method="post" action="/vaults")
             input(type="text" name="name" required)
             div
             button(type="submit") Create Vault
+    h1 My Vaults
+    div.vaultContainer
+        each vault in vaults
+            div.vaultBlock
+                //- h2= vault.name
+                a(href=`http://localhost:8080/vaults/${vault.id}`)
+                    h2= vault.name
+                        

@@ -1,0 +1,23 @@
+.vaultContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    background: #eee;
+    margin: 10px auto;
+    position: relative;
+    text-align: center;
+}
+
+.vaultBlock {
+    text-align: center;
+    height: 250px;
+    width: 200px;
+    margin: 10px;
+    background: #eee;
+}
+
+h1 {
+    text-align: center;
+    background: #eee;
+}
