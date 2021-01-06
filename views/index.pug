@@ -10,7 +10,9 @@ block content
   main(class='mainContentContainer')
     div(class='description')
       h2 Welcome!
-      p FilmUp is a hub for cinephiles and movie recommendations. Our mission is to help people find and share movies they love.
+      p
+        | FilmUp is a hub for cinephiles and movie recommendations.
+        | Our mission is to help people find and share movies they love.
 
     div(class='recentlyAdded')
       h2 Recently Added Movies
@@ -18,11 +20,13 @@ block content
         each recentMovie in recentMovies
           div(class='recentMovie')
             //- TODO: FINISH IMPLEMENTING THIS SECTION
-            a(href=`http://localhost:8080/movies/${recentMovie.id}`)
-              img(src= recentMovie.posterPath width=200 height=250 id= 'moviePoster')
+            a(href=`/movies/${recentMovie.id}`)
+              img(src= recentMovie.posterPath id= 'moviePoster')
               div.hiddenDescr Test Description
 
     div(class='moviesByGenre')
       h2 Movie Genres
-      each genre in genres
-        a(href="/")= genre.name
+      ul
+        each genre in genres
+          //- TODO: IMPLEMENT LINK TO SHOW LIST OF MOVIES IN A GENRE
+          li: a(href="/")= genre.name

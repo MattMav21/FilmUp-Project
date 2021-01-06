@@ -1,10 +1,15 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lato", "Helvetica Neue", "Helvetica", sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #00635D;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 * {
@@ -25,5 +30,3 @@ body, header, nav {
 h1 {
   font-size: 2rem;
 }
-
-

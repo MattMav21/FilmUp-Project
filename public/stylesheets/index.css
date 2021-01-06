@@ -5,23 +5,126 @@ h1 {
 .mainContentContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px 10px;
+    justify-items: center;
+    align-items: center;
 }
 
 .description {
+    text-align: center;
+    margin: 2em;
+}
 
+.description h2 {
+    padding: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #333333;
+}
+
+.recentlyAdded {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    text-align: center;
+    border: thin solid #D8D8D8;
+    border-radius: 2px;
+    background-color: #F4F1EA;
+
+}
+
+.recentlyAdded h2 {
+    padding: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #333333;
 }
 
 .recentlyAddedContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 1em;
 }
 
-.recentlyAddedContainer .movieBlock {
-    height: 150px;
-    width: 100px;
+.recentlyAddedContainer img {
+    height: 200px;
     margin: 10px;
 }
 
 .moviesByGenre {
+    align-self: start;
+}
 
+.moviesByGenre ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 20px;
+}
+
+.moviesByGenre h2 {
+    text-align: center;
+    padding: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #333333;
+}
+
+.moviesByGenre li {
+    text-align: left;
+    margin-left: 1em;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+        "siteLinks connectWithUs"
+        "small small";
+    align-items: start;
+}
+
+footer .siteLinks, footer .connectWithUs {
+    text-align: center;
+    padding: 1em;
+    color: #333333;
+}
+
+footer .connectWithUs {
+    display: grid;
+    grid-template-areas:
+        "connect connect connect connect"
+        "1 2 3 4";
+    justify-content: center;
+}
+
+.siteLinks {
+    justify-self: right;
+}
+
+.connectWithUs {
+    justify-self: left;
+}
+
+footer h3 {
+    padding: 1em;
+    font-size: 0.75rem;
+    text-emphasis: bold;
+    text-transform: uppercase;
+}
+
+.connectWithUs h3 {
+    grid-area: connect;
+}
+
+small {
+    grid-area: small;
+    text-align: center;
+}
+
+.footer-span {
+    color: #767676;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size: 12px;
+    line-height: 1.15;
 }
