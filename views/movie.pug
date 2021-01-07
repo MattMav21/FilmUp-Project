@@ -1,8 +1,32 @@
 extends layout
 
+append head
+  script(src="/javascripts/movie.js" type="module" defer)
+
 block content
-  h1= movie.title
-  img(src= movie.posterPath width=150 height=200)
-  p= movie.description
-  p= movie.releaseDate
-  p= movie.Genre.name
+  div.mainMovie
+    div.mainContainer
+      div#moviecol
+        img.mainMoviePoster(src= movie.posterPath width=150 height=200)
+        div.watchedsection
+          div.watchedbutton
+            button#watched(type="button")
+              span#buttonSpan Unwatched
+              if vaults
+                form(action=`/movies/${movie.id}` method='post')
+                  input(type='hidden' name='_csrf' value=token)
+                  input(type='hidden' name='movieId' value=movie.id)
+                  input(type='hidden' )
+                  button#addToVault(type="submit")
+                    span#buttonSpan Add To Vault
+                  select(name='vaultId')
+                    each vault in vaults
+                      option(value=vault.id)= vault.name
+      div#moviecont
+        h1#movietitle.movieHeader= movie.title
+        br
+        div.moviedetails= `Synopsis: ${movie.description}`
+        br
+        div= `Release Date: ${movie.releaseDate}`
+        br
+        div= `Genre: ${movie.Genre.name}`

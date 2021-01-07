@@ -48,3 +48,110 @@
   display: block;
   color: red
 }
+
+.movieHeader {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  margin: auto;
+}
+
+.mainMovie {
+  float: left;
+  width: auto;
+  margin-top: 15px;
+  margin-left: 5px;
+  font-size: 12px;
+  min-height: 400px;
+  background: #FFFFFF;
+  text-align: left;
+}
+
+.mainContainer {
+  width: auto;
+  margin-right: 0px;
+  float: left;
+  margin: 0 20px 10px 0;
+  margin-bottom: 10px
+}
+
+#moviecol {
+  width: 155px;
+  text-align: center;
+  float: left;
+  margin: 0 20px 10px 0;
+}
+
+#moviecont {
+  width: 75%;
+  margin-right: 0px;
+  float: left;
+  margin: 0 20px 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* .moviedetails {
+} */
+
+#movietitle {
+  width: auto;
+  margin-bottom: 0
+
+}
+
+.watchedsection {
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 67px;
+  width: 140px;
+  position: relative;
+}
+
+.watchedbutton {
+  border-width: 0px;
+  width: 140px;
+  background-color: #409d69;
+  color: #FFF;
+  border-radius: 3px;
+  border-style: solid;
+  box-sizing: content-box;
+  float: left;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  overflow: hidden;
+  text-align: left;
+  word-wrap: normal;
+  white-space: nowrap;
+}
+
+#watched {
+  background-color: #409D69;
+  color: #fff;
+  font-size: inherit;
+  -webkit-font-smoothing: antialiased;
+  height: 28px;
+  padding: 6px 0 6px 8px;
+  box-sizing: border-box;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: block;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: auto;
+  text-align: inherit;
+  min-width: 0 !important;
+  appearance: button;
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  align-items: flex-start;
+  font: 400 13.3333px Arial;
+
+}
