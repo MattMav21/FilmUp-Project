@@ -9,5 +9,5 @@ block content
                     a(href=`/movies/${movie.id}`)
                         img(src= movie.posterPath width=150 height=200 id= 'moviePoster')
                         h2= movie.title
-                
-        button(type="submit" id="delete-vault") Delete Vault
+        div.deleteContainer 
+            button(type="submit" id="delete-vault") Delete Vault

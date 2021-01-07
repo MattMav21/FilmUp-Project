@@ -1,3 +1,9 @@
+.formContainer {
+    /* background-color: red; */
+    display: flex;
+    padding-left: 1rem;
+}
+
 .vaultContainer {
     display: flex;
     justify-content: center;
@@ -25,4 +31,36 @@ h1 {
 #link:hover {
     background-color: rgb(53, 34, 19);
     color: blue;
+}
+
+#createVault {
+    background-color: cornflowerblue;
+    padding: 3px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.vaultSpace {
+    width: 1rem;
+    height: 1rem;
+}
+
+#vaultInput {
+    border: solid .2rem black;
+}
+
+.deleteContainer {
+    display: flex;
+    padding-left: 1rem;
+}
+
+#delete-vault {
+    background-color: cornflowerblue;
+    padding: 3px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
