@@ -12,13 +12,16 @@ block content
           div.watchedbutton
             button#watched(type="button")
               span#buttonSpan Unwatched
-            //- form(action=`/movies/${movie.id}` method= 'post')
-            //-   input(type='hidden')
-            //-   input(type='hidden' name=userId /*value=user.id*/)
-            //-   input(type='hidden' name=movieId value=movie.id)
-
-            //-   button#watched(type='submit')
-            //-     span Unwatched
+              if vaults
+                form(action=`/movies/${movie.id}` method='post')
+                  input(type='hidden' name='_csrf' value=token)
+                  input(type='hidden' name='movieId' value=movie.id)
+                  input(type='hidden' )
+                  button#addToVault(type="submit")
+                    span#buttonSpan Add To Vault
+                  select(name='vaultId')
+                    each vault in vaults
+                      option(value=vault.id)= vault.name
       div#moviecont
         h1#movietitle.movieHeader= movie.title
         br
