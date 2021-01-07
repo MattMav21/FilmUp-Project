@@ -10,18 +10,23 @@ block content
         img.mainMoviePoster(src= movie.posterPath width=150 height=200)
         div.watchedsection
           div.watchedbutton
-            button#watched(type="button")
-              span#buttonSpan Unwatched
-              if vaults
-                form(action=`/movies/${movie.id}` method='post')
-                  input(type='hidden' name='_csrf' value=token)
-                  input(type='hidden' name='movieId' value=movie.id)
-                  input(type='hidden' )
-                  button#addToVault(type="submit")
-                    span#buttonSpan Add To Vault
-                  select(name='vaultId')
-                    each vault in vaults
-                      option(value=vault.id)= vault.name
+            if vaults
+              form(action=`/movies/${movie.id}` method='post')
+                input(type='hidden' name='_csrf' value=token)
+                input(type='hidden' name='movieId' value=movie.id)
+                input(type='hidden' name='watched' value='watched')
+                button#watched(type="submit")
+                  span#buttonSpan Unwatched
+            if vaults
+              form(action=`/movies/${movie.id}` method='post')
+                input(type='hidden' name='_csrf' value=token)
+                input(type='hidden' name='movieId' value=movie.id)
+                input(type='hidden' name='addToVault' value='added')
+                button#addToVault(type="submit")
+                  span#buttonSpan Add To Vault
+                select(name='vaultId')
+                  each vault in vaults
+                    option(value=vault.id)= vault.name
       div#moviecont
         h1#movietitle.movieHeader= movie.title
         br
