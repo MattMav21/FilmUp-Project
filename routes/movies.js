@@ -37,11 +37,31 @@ router.post('/:id/reviews', requireAuth, asyncHandler(async (req, res) => {
 
 router.post('/:id/reviews/:reviewId/edit', requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id;
+  const movie = await db.Movie.findByPk(id, { include: db.Genre })
   const reviewId = req.params.reviewId;
   const review = await db.WatchedMovie.findByPk(reviewId);
   console.log(reviewId)
   // review.content = req.params;
   // await review.save();
+  res.render('movie-edit', {id, movie, reviewId, review})
+}));
+
+router.post('/:id/reviews/:reviewId/edit/edited', requireAuth, asyncHandler(async (req, res) => {
+  const id = req.params.id;
+  const movie = await db.Movie.findByPk(id, { include: [db.Genre, { model: db.WatchedMovie, as: 'Reviews' }] })
+  const reviewId = req.params.reviewId;
+  const review = await db.WatchedMovie.findByPk(reviewId);
+  // console.log('REQUEST PARAMETERS', req.params)
+  // console.log("ID", id)
+  // console.log("MOVIE", movie)
+  //console.log("REVIEW ID", reviewId)
+  //console.log("REVIEW CONTENT", review.content)
+  // console.log(req.body)
+  // console.log(req.params.id)
+  // console.log(review.content)
+  review.content = req.body.content
+  await review.save();
+  res.redirect(`/movies/${id}`)
 }));
 
 router.post('/:id/reviews/:reviewId/delete', requireAuth, asyncHandler(async (req, res) => {

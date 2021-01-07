@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1= movie.title
+  img(src= movie.posterPath width=150 height=200)
+  p= movie.description
+  p= movie.releaseDate
+  p= movie.Genre.name
+  div
+  h1(class='review-header')= "Reviews"
+  div
+  form(method='POST' action=`/movies/${movie.id}/reviews`)
+    input(class='review-area' name='content')
+    div
+    button(class='review-button' type='submit') Submit Review!
+    div
+  div(class='review-collection' method="POST" action=`/movies/`)
+
+
+  div(class='review editable')= review.content
+    form(method='POST' action=`/movies/${movie.id}/reviews/${review.id}/edit/edited`)
+      input(name='content')
+      button(type='submit') Edit Review
+
+
+      //- form(class='edit' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/edit`)
+      //-   button(class='edit-button' type='submit') edit
+      //- form(class='delete' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/delete`)
+      //-   button(class='delete-button' type='submit') delete
+      //- form(class='delete' method="POST" action=`/movies/${movie.id}/reviews/${movie.Reviews}`)
+      //-   button(class='delete-button' type='submit') delete
