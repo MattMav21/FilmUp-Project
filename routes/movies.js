@@ -27,18 +27,14 @@ router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
 router.post(/\/\d+/, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
 
   const vaultedMovies = await db.VaultMovie.findAll({ where: { vaultId: req.body.vaultId, movieId: req.body.movieId } })
-  // console.log(vaultedMovies)
 
-  if (vaultedMovies === []) {
+
+  if (!vaultedMovies[0]) {
     await db.VaultMovie.create({ vaultId: req.body.vaultId, movieId: req.body.movieId })
     res.redirect(`/movies/${req.body.movieId}`)
   } else {
     throw new Error('Movie already in vault')
   }
-
-
-  // res.redirect(`/movies/${req.body.movieId}`)
-
 }))
 
 
