@@ -4,10 +4,10 @@ block content
     form(method="post" action=`/vaults/${vault.id}`)
         h1= vault.name
         div.movieContainer
-            each movie in movies
+            each vaultedMovie in vault.Movies
                 div.movieBlock
-                    a(href=`/movies/${movie.id}`)
-                        img(src= movie.posterPath width=150 height=200 id= 'moviePoster')
-                        h2= movie.title
+                    a(href=`/movies/${vaultedMovie.id}`)
+                        img(src= vaultedMovie.posterPath width=150 height=200 id= 'moviePoster')
+                        //- h2= vaultedMovie.title
         div.deleteContainer 
             button(type="submit" id="delete-vault") Delete Vault

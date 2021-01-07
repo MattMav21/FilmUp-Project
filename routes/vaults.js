@@ -28,14 +28,34 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 
 router.get('/:id', requireAuth, asyncHandler(async (req, res) => {
     // We want to access a specific vault
-    const vault = await db.Vault.findByPk(req.params.id)
+    const vault = await db.Vault.findByPk(req.params.id, { include: db.Movie })
+    console.log(vault.Movies.map((movie) => movie.toJSON()))
     const user = await db.User.findOne({ where: { id: req.session.auth.userId } });
-    const movies = await db.Movie.findAll()
+    // const movies = await db.Movie.findAll()
     // Also need to get the movies associated with the vault.
     // This needs to be ONLY the movies for the user in that respective vault
     // TODO: Find a way to grab the movies associated with a specific vault for a specific user
     // Then render that specific vault on the page with access to its respective movies
-    res.render('vault', { vault, movies })
+
+    // const vaultedMovies = await db.VaultMovie.findAll({
+    //     where: { vaultId: req.params.id },
+    //     include: [{ model: db.Movie }, { model: db.Vault, where: { userId: req.session.auth.userId } }  ]
+    // })
+    
+    // const vaultedMovies = await db.Vault.findAll({
+    //     // include: [ { model: db.Movie, through: { attributes: ['id'], where: {
+    //     //     vaultId: vault.id
+    //     // } }}]
+    // })
+
+    const vaultedMovies = await db.Movie.findAll({
+        include:  { model: db.Vault, through: { attributes: ['movieId'], where: {
+            vaultId: vault.id
+        } }}
+    })
+    // console.log(vaultedMovies)
+
+    res.render('vault', { vault, vaultedMovies })
 }))
 
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
