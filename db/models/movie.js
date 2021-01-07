@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     Movie.belongsToMany(models.User, { foreignKey: 'movieId', through: 'WatchedMovies', otherKey: 'userId' })
     Movie.belongsTo(models.Genre, { foreignKey: 'genreId' })
     Movie.belongsToMany(models.Vault, { foreignKey: 'movieId', through: 'VaultMovies', otherKey: 'vaultId' })
-    //Movie.hasMany(models.WatchedMovie, { foreignKey: 'movieId' })
+    Movie.hasMany(models.WatchedMovie, { foreignKey: 'movieId', as: 'Reviews' })
 
 
   };
