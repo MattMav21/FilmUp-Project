@@ -1,4 +1,5 @@
 .top-navbar {
+    z-index: 1;
     width: 100%;
     height: 40px;
     background-color:rgb(243, 241, 235);
@@ -6,29 +7,36 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    position: relative;
-    bottom: 10px;
-    right: 10px;
-    order: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.navbar-text {
+    text-align: center;
 }
 
 .bottom-navbar {
+    z-index: 1;
     width: 101%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    bottom: 10px;
-    right: 10px;
-    /* height: 70px; */
-    /* justify-content: center; */
-    /* justify-content: space-around; */
-    /* padding: 0 10px; */
-    /* width: 100%; */
-    /* right: 10px; */
-    order: 1;
+    position: fixed;
+    top: 40px;
+    left: 0;
     box-shadow: 1px 0 2px rgba(0,0,0,0.15);
-    
+
+}
+
+.nav-button {
+    height: 30px;
+    margin: 0 5px;
+}
+
+.nav-background {
+    position: relative;
+    height: 100px;
 }
 
 /* .bottom-navbar {
@@ -42,15 +50,16 @@
 } */
 
 .logo {
-    justify-self: left;
+
 }
 
 .search {
     border: 1px solid rgb(219, 214, 205);
     border-radius: 3px;
-    padding: 20px;
+    margin: 0 10px;
     width: 100%;
-    height: 1px;
+    height: 30px;
+
 }
 
 /* TODO: Turn border brown when clicked on. */
@@ -59,7 +68,6 @@
 } */
 
 .buttons {
-    /* border: 5px solid black; */
     background-color:rgb(243, 241, 235);
     color: rgb(53, 34, 19);
     display: flex;
@@ -67,7 +75,6 @@
     align-items: center;
     width: 100%;
     height: 40px;
-    /* height: 100%; */
     text-align: center;
     transition: background-color .5s;
     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
@@ -78,7 +85,7 @@
     color: white;
 }
 
-/* 
+/*
 @media screen and (max-width: 767px) {
     .search {
         display: hidden;

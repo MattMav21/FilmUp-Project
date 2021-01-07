@@ -8,5 +8,25 @@ append head
 
 block content
   main(class='mainContentContainer')
+    div(class='description')
+      h2 Welcome!
+      p
+        | FilmUp is a hub for cinephiles and movie recommendations.
+        | Our mission is to help people find and share movies they love.
+
     div(class='recentlyAdded')
-    div
+      h2 Recently Added Movies
+      div(class='recentlyAddedContainer')
+        each recentMovie in recentMovies
+          div(class='recentMovie')
+            //- TODO: FINISH IMPLEMENTING THIS SECTION
+            a(href=`/movies/${recentMovie.id}`)
+              img(src= recentMovie.posterPath id= 'moviePoster')
+              div.hiddenDescr Test Description
+
+    div(class='moviesByGenre')
+      h2 Movie Genres
+      ul
+        each genre in genres
+          //- TODO: IMPLEMENT LINK TO SHOW LIST OF MOVIES IN A GENRE
+          li: a(href="/")= genre.name
