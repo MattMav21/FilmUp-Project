@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const db = require('../db/models')
-const { asyncHandler } = require('./utils');
+const { asyncHandler, csrfProtection } = require('./utils');
 
 router.get('/', asyncHandler(async (req, res) => {
   const movies = await db.Movie.findAll()
@@ -15,6 +15,11 @@ router.get(/\/\d+/, asyncHandler(async (req, res) => {
   const movie = await db.Movie.findByPk(id, { include: db.Genre })
   console.log(movie)
   res.render('movie', { movie })
+}))
+
+router.post(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
+
+
 }))
 
 
