@@ -41,6 +41,12 @@ h1 {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-family: "Lato",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+    border-radius: 3px;
 }
 
 .vaultSpace {
@@ -65,4 +71,10 @@ h1 {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-family: "Lato",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+    border-radius: 3px;
 }

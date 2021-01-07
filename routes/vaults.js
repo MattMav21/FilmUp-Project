@@ -4,16 +4,6 @@ const db = require('../db/models');
 const { asyncHandler } = require('./utils');
 const { requireAuth } = require('../auth')
 
-// TODO: Ensure the middleware can check is the session/user is valid.
-// This middleware will check if a user is logged in. If so, nothing will happen.
-// If not, then they will be alerted they need to login/sign up and be redirected.
-// const isUser = (req, res, next) => {
-//     if(!req.User.email) {
-//         alert('Please login or sign up!')
-//         res.redirect('/signup')
-//     }
-//     next()
-// }
 
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
     // Since this page displays all of the vaults associated with the user
@@ -29,32 +19,16 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 router.get('/:id', requireAuth, asyncHandler(async (req, res) => {
     // We want to access a specific vault
     const vault = await db.Vault.findByPk(req.params.id, { include: db.Movie })
-    console.log(vault.Movies.map((movie) => movie.toJSON()))
+    // console.log(vault.Movies.map((movie) => movie.toJSON()))
     const user = await db.User.findOne({ where: { id: req.session.auth.userId } });
-    // const movies = await db.Movie.findAll()
     // Also need to get the movies associated with the vault.
     // This needs to be ONLY the movies for the user in that respective vault
-    // TODO: Find a way to grab the movies associated with a specific vault for a specific user
     // Then render that specific vault on the page with access to its respective movies
-
-    // const vaultedMovies = await db.VaultMovie.findAll({
-    //     where: { vaultId: req.params.id },
-    //     include: [{ model: db.Movie }, { model: db.Vault, where: { userId: req.session.auth.userId } }  ]
-    // })
-    
-    // const vaultedMovies = await db.Vault.findAll({
-    //     // include: [ { model: db.Movie, through: { attributes: ['id'], where: {
-    //     //     vaultId: vault.id
-    //     // } }}]
-    // })
-
     const vaultedMovies = await db.Movie.findAll({
         include:  { model: db.Vault, through: { attributes: ['movieId'], where: {
             vaultId: vault.id
         } }}
     })
-    // console.log(vaultedMovies)
-
     res.render('vault', { vault, vaultedMovies })
 }))
 

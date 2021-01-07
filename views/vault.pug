@@ -8,6 +8,6 @@ block content
                 div.movieBlock
                     a(href=`/movies/${vaultedMovie.id}`)
                         img(src= vaultedMovie.posterPath width=150 height=200 id= 'moviePoster')
-                        //- h2= vaultedMovie.title
+                        h2= vaultedMovie.title
         div.deleteContainer 
             button(type="submit" id="delete-vault") Delete Vault
