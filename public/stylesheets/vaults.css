@@ -34,7 +34,8 @@ h1 {
 }
 
 #createVault {
-    background-color: cornflowerblue;
+    background-color: #409D69;
+    color: #fff;
     padding: 3px 20px;
     text-align: center;
     text-decoration: none;
@@ -57,7 +58,8 @@ h1 {
 }
 
 #delete-vault {
-    background-color: cornflowerblue;
+    background-color: #409D69;
+    color: #fff;
     padding: 3px 20px;
     text-align: center;
     text-decoration: none;
