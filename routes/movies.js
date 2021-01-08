@@ -48,7 +48,7 @@ router.post('/:id/reviews/:reviewId/edit', requireAuth, asyncHandler(async (req,
 
 router.post('/:id/reviews/:reviewId/edit/edited', requireAuth, asyncHandler(async (req, res) => {
   const id = req.params.id;
-  const movie = await db.Movie.findByPk(id, { include: [db.Genre, { model: db.WatchedMovie, as: 'Reviews' }] })
+  //const movie = await db.Movie.findByPk(id, { include: [db.Genre, { model: db.WatchedMovie, as: 'Reviews' }] })
   const reviewId = req.params.reviewId;
   const review = await db.WatchedMovie.findByPk(reviewId);
   // console.log('REQUEST PARAMETERS', req.params)
