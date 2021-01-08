@@ -65,6 +65,7 @@ router.post('/:id', requireAuth, csrfProtection, asyncHandler(async (req, res) =
     const vaultedMovies = await db.VaultMovie.findAll({ where: { vaultId: req.body.vaultId, movieId: req.body.movieId } })
     if (!vaultedMovies[0]) {
       await db.VaultMovie.create({ vaultId: req.body.vaultId, movieId: req.body.movieId })
+      // res.json('added to vault')
       res.redirect(`/movies/${req.body.movieId}`)
     } else {
       throw new Error('Movie already in vault')
@@ -73,8 +74,9 @@ router.post('/:id', requireAuth, csrfProtection, asyncHandler(async (req, res) =
     const watchedMovie = await db.WatchedMovie.findAll({ where: { userId: req.session.auth.userId, movieId: req.body.movieId } })
 
     if (!watchedMovie[0]) {
-      await db.WatchedMovie.create({ userId: req.session.auth.userId, movieId: req.body.movieId })
-      res.redirect(`/movies/${req.body.movieId}`)
+      const watchMovie = await db.WatchedMovie.create({ userId: req.session.auth.userId, movieId: req.body.movieId })
+      res.json(watchMovie)
+      // res.redirect(`/movies/${req.body.movieId}`)
     } else {
       throw new Error('Movie already watched!')
     }
