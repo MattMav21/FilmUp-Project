@@ -1,13 +1,16 @@
 extends layout
 
+append head
+    script(src="/javascripts/vault.js" type="module" defer)
 block content
     form(method="post" action=`/vaults/${vault.id}`)
         h1= vault.name
         div.movieContainer
             each vaultedMovie in vault.Movies
-                div.movieBlock
+                div.movieBlock(id=`movieBlock-${vaultedMovie.id}`)
                     a(href=`/movies/${vaultedMovie.id}`)
                         img(src= vaultedMovie.posterPath width=150 height=200 id= 'moviePoster')
                         h2= vaultedMovie.title
+                    button(type="button" id="delete-movie" data-movieid=`${vaultedMovie.id}` data-vaultid=`${vault.id}`) Delete Movie
         div.deleteContainer 
             button(type="submit" id="delete-vault") Delete Vault
