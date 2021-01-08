@@ -20,12 +20,9 @@ router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
   } else {
     res.render('movie', { movie })
   }
-
-
 }))
 
 router.post(/\/\d+/, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-
   if (req.body.addToVault) {
     const vaultedMovies = await db.VaultMovie.findAll({ where: { vaultId: req.body.vaultId, movieId: req.body.movieId } })
     if (!vaultedMovies[0]) {
