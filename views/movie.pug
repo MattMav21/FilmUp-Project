@@ -11,14 +11,14 @@ block content
         div.watchedsection
           div.watchedbutton
             if vaults
-              form(action=`/movies/${movie.id}` method='post')
+              form(action=`/movies/:id` method='post')
                 input(type='hidden' name='_csrf' value=token)
                 input(type='hidden' name='movieId' value=movie.id)
                 input(type='hidden' name='watched' value='watched')
                 button#watched(type="submit")
-                  span#buttonSpan Unwatched
+                  span#watchedSpan Unwatched
             if vaults
-              form(action=`/movies/${movie.id}` method='post')
+              form(action=`/movies/:id` method='post')
                 input(type='hidden' name='_csrf' value=token)
                 input(type='hidden' name='movieId' value=movie.id)
                 input(type='hidden' name='addToVault' value='added')

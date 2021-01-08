@@ -12,7 +12,7 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
   const id = req.path.split('/')[1]
-  const movie = await db.Movie.findByPk(id, { include: [db.Genre, {model: db.WatchedMovie, as: 'Reviews'}]})
+  const movie = await db.Movie.findByPk(id, { include: [db.Genre, { model: db.WatchedMovie, as: 'Reviews' }] })
   if (res.locals.authenticated) {
     const vaults = await db.Vault.findAll({ where: { userId: req.session.auth.userId } })
     res.render('movie', { movie, vaults, token: req.csrfToken() })
@@ -60,7 +60,7 @@ router.post('/:id/reviews/:reviewId/delete', requireAuth, csrfProtection, asyncH
   res.redirect(`/movies/${id}`);
 }));
 
-router.post(/\/\d+/, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+router.post('/:id', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   if (req.body.addToVault) {
     const vaultedMovies = await db.VaultMovie.findAll({ where: { vaultId: req.body.vaultId, movieId: req.body.movieId } })
     if (!vaultedMovies[0]) {
@@ -80,5 +80,6 @@ router.post(/\/\d+/, requireAuth, csrfProtection, asyncHandler(async (req, res) 
     }
   }
 }))
+
 
 module.exports = router;
