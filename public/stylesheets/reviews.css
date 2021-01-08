@@ -1,0 +1,39 @@
+
+.review-area {
+    width: 500px;
+    height: fit-content(500px);
+    padding: 20px;
+    align-self: center;
+}
+
+.review-button {
+    background-color: yellow;
+}
+
+.review-collection {
+    width: 500px;
+    height: auto;
+    display: grid;
+    padding: 30px 0;
+}
+
+.review {
+    height: 50px;
+    width: 800px;
+    background-color: red;
+    border: 1px solid red;
+    display: flex;
+    padding: 20px 5px;
+    align-items: center;
+    justify-content: end;
+}
+
+.edit-button {
+    position: relative;
+    left: 70px;
+}
+
+.delete-button {
+    position: relative;
+    left: 70px;
+}
