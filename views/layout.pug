@@ -7,8 +7,10 @@ html
         link(rel='stylesheet' href='/stylesheets/index.css')
         link(rel='stylesheet' href='/stylesheets/movie.css')
         link(rel='stylesheet' href='/stylesheets/reviews.css')
+        link(rel='stylesheet' href='/stylesheets/vaults.css')
   body
-    include navbar
+    include utils.pug
+    include navbar.pug
     block content
 
     footer
@@ -25,12 +27,11 @@ html
           a(href="/") Link Placeholder
 
       div(class='connectWithUs')
-        h3 Connect With Us
-        div
-          a(href="/") Link Placeholder
-        div
-          a(href="/") Link Placeholder
-        div
-          a(href="/") Link Placeholder
-        div
-          a(href="/") Link Placeholder
+        h3(class="connectWithUs-h3") Connect With Us
+        +connectWithUsLinks("https://github.com/guipace", "Guilherme Pace")
+        +connectWithUsLinks("https://github.com/HeroRoku", "Jevon Timmons")
+        +connectWithUsLinks("https://github.com/lanejohns", "Lane Johns")
+        +connectWithUsLinks("https://github.com/MattMav21", "Matthew Hasan")
+
+      small
+        span(class="footer-span") ©2021 FilmUp, Inc.

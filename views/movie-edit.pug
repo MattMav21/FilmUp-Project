@@ -10,6 +10,7 @@ block content
   h1(class='review-header')= "Reviews"
   div
   form(method='POST' action=`/movies/${movie.id}/reviews`)
+    input(type='hidden' name='_csrf' value=token)
     input(class='review-area' name='content')
     div
     button(class='review-button' type='submit') Submit Review!
@@ -19,5 +20,6 @@ block content
 
   div(class='review editable')
     form(method='POST' action=`/movies/${movie.id}/reviews/${review.id}/edit/edited`)
+      input(type='hidden' name='_csrf' value=token)
       input(name='content' value=`${review.content}`)
       button(type='submit') Edit Review

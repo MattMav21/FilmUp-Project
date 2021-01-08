@@ -1,4 +1,5 @@
 .top-navbar {
+    z-index: 1;
     width: 100%;
     height: 40px;
     background-color:rgb(243, 241, 235);
@@ -6,60 +7,68 @@
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    position: relative;
-    bottom: 10px;
-    right: 10px;
-    order: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.top-navbar-logo {
+    height: 30px;
+}
+
+.navbar-text {
+    text-align: center;
 }
 
 .bottom-navbar {
+    z-index: 1;
     width: 101%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: relative;
-    bottom: 10px;
-    right: 10px;
-    /* height: 70px; */
-    /* justify-content: center; */
-    /* justify-content: space-around; */
-    /* padding: 0 10px; */
-    /* width: 100%; */
-    /* right: 10px; */
-    order: 1;
+    position: fixed;
+    top: 40px;
+    left: 0;
     box-shadow: 1px 0 2px rgba(0,0,0,0.15);
-    
+
 }
 
-/* .bottom-navbar {
-    width: 100%;
-    background-color: green;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 5px;
-    bottom: 10px;
-} */
+.nav-button {
+    height: 30px;
+    margin: 0 5px;
+    background-color: #409d69;
+    color: #FFF;
+    border-radius: 3px;
+    border-style: solid;
+    box-sizing: content-box;
+    float: left;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    overflow: hidden;
+    text-align: center;
+    word-wrap: normal;
+    white-space: nowrap;
+}
 
-.logo {
-    justify-self: left;
+.nav-button:hover {
+    background-color: #1f4e33;
+}
+
+.nav-background {
+    position: relative;
+    height: 100px;
 }
 
 .search {
     border: 1px solid rgb(219, 214, 205);
     border-radius: 3px;
-    padding: 20px;
+    margin: 0 10px;
     width: 100%;
-    height: 1px;
+    height: 30px;
+
 }
 
-/* TODO: Turn border brown when clicked on. */
-/* .search:focus {
-  border: 5px solid purple;
-} */
-
 .buttons {
-    /* border: 5px solid black; */
     background-color:rgb(243, 241, 235);
     color: rgb(53, 34, 19);
     display: flex;
@@ -67,7 +76,6 @@
     align-items: center;
     width: 100%;
     height: 40px;
-    /* height: 100%; */
     text-align: center;
     transition: background-color .5s;
     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
@@ -76,9 +84,10 @@
 .buttons:hover {
     background-color: rgb(53, 34, 19);
     color: white;
+    text-decoration: none;
 }
 
-/* 
+/*
 @media screen and (max-width: 767px) {
     .search {
         display: hidden;
