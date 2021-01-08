@@ -6,16 +6,13 @@ html
     block head
 body
     nav(class="top-navbar")
-        div: a(class="logo" href="/"): img(src="/images/githubicon.png", alt="FilmUp")
+        div: a(class="logo" href="/"): img(class="top-navbar-logo" src="/images/logo.png", alt="FilmUp")
         input(class="search" type='text' name='query' placeholder='search movies')
         if locals.authenticated
             span(class='navbar-text px-4') Welcome #{user.firstName}!
             form(class='form-inline pr-4' action='/logout' method='post')
                 button(class='nav-button' type='submit') Logout
         else
-            //- span(class='navbar-text px-4')
-            //- a(class='btn btn-sm btn-dark mr-2' href='/login') Login
-            //- a(class='btn btn-sm btn-dark' href='/signup') Register
             form(class='form-inline' action='/login' method='get')
                 button(class='nav-button' type='submit') Login
             form(class='form-inline' action='/signup' method='get')

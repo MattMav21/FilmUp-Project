@@ -7,6 +7,7 @@ html
         link(rel='stylesheet' href='/stylesheets/index.css')
         link(rel='stylesheet' href='/stylesheets/movie.css')
   body
+    include utils.pug
     include navbar.pug
     block content
 
@@ -25,10 +26,10 @@ html
 
       div(class='connectWithUs')
         h3(class="connectWithUs-h3") Connect With Us
-        div: a(href="https://github.com/guipace"): img(src="/images/githubicon.png", alt="Guilherme Pace")
-        div: a(href="https://github.com/HeroRoku"): img(src="/images/githubicon.png", alt="Jevon Timmons")
-        div: a(href="https://github.com/lanejohns"): img(src="/images/githubicon.png", alt="Lane Johns")
-        div: a(href="https://github.com/MattMav21"): img(src="/images/githubicon.png", alt="Matthew Hasan")
+        +connectWithUsLinks("https://github.com/guipace", "Guilherme Pace")
+        +connectWithUsLinks("https://github.com/HeroRoku", "Jevon Timmons")
+        +connectWithUsLinks("https://github.com/lanejohns", "Lane Johns")
+        +connectWithUsLinks("https://github.com/MattMav21", "Matthew Hasan")
 
       small
         span(class="footer-span") ©2021 FilmUp, Inc.
