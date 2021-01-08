@@ -21,7 +21,6 @@ router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
   }
 }))
 
-
 router.post('/:id/reviews', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   console.log("POSTING REVIEW")
   const id = req.params.id
@@ -35,8 +34,6 @@ router.post('/:id/reviews', requireAuth, csrfProtection, asyncHandler(async (req
   review.save();
   res.redirect(`/movies/${id}`)
 }));
-
-
 
 router.post('/:id/reviews/:reviewId/edit', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   console.log("EDITING REVIEW")
