@@ -3,9 +3,9 @@ extends layout
 include utils.pug
 
 block content
-    +validationErrorSummary(errors)
     div(class="form-div")
         h2 Sign up to FilmUp
+        +validationErrorSummary(errors)
         form(action="/signup" method="POST")
             input(type='hidden' name='_csrf' value=token)
             +formField("First Name", "firstName", 'Enter your first name')

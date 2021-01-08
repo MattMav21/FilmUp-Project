@@ -8,7 +8,6 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const { sessionSecret } = require('./config')
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 
 const moviesRouter = require('./routes/movies')
 
@@ -47,7 +46,6 @@ store.sync();
 
 app.use(restoreUser);
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/signup', signupRouter);
 app.use('/vaults', vaultRouter)
 app.use('/movies', moviesRouter);

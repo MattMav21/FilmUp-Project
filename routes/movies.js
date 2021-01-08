@@ -43,7 +43,15 @@ router.post(/\/\d+/, requireAuth, csrfProtection, asyncHandler(async (req, res) 
   }
 }))
 
+router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
+  if (req.body.query) {
+    const movies = await db.Movie.findAll({});
 
+    res.render('movies', { movies });
+  }
+
+
+}));
 
 
 

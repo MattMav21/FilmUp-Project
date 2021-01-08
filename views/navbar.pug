@@ -7,7 +7,9 @@ html
 body
     nav(class="top-navbar")
         div: a(class="logo" href="/"): img(class="top-navbar-logo" src="/images/logo.png", alt="FilmUp")
-        input(class="search" type='text' name='query' placeholder='search movies')
+        form(class="top-navbar-form" action="/movies/search", method="post")
+            input(type='hidden' name='_csrf' value=token)
+            input(class="search" type='text' name='query' placeholder='Search our movie catalogue')
         if locals.authenticated
             span(class='navbar-text px-4') Welcome #{user.firstName}!
             form(class='form-inline pr-4' action='/logout' method='post')

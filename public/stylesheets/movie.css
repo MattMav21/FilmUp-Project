@@ -1,3 +1,7 @@
+.moviesPageContainer {
+  margin: 20px;
+}
+
 .movieContainer {
   display: flex;
   justify-content: center;
@@ -7,6 +11,10 @@
   margin: 10px auto;
   position: relative;
   text-align:center;
+}
+
+.mainMoviePoster {
+  height: 300px;
 }
 
 .movieBlock {
@@ -59,10 +67,8 @@
 }
 
 .mainMovie {
-  float: left;
   width: auto;
-  margin-top: 15px;
-  margin-left: 5px;
+  margin: 20px;
   font-size: 12px;
   min-height: 400px;
   background: #FFFFFF;
@@ -78,7 +84,6 @@
 }
 
 #moviecol {
-  width: 155px;
   text-align: center;
   float: left;
   margin: 0 20px 10px 0;

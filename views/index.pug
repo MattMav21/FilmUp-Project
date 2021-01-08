@@ -19,10 +19,9 @@ block content
       div(class='recentlyAddedContainer')
         each recentMovie in recentMovies
           div(class='recentMovie')
-            //- TODO: FINISH IMPLEMENTING THIS SECTION
             a(href=`/movies/${recentMovie.id}`)
               img(src= recentMovie.posterPath id= 'moviePoster')
-              div.hiddenDescr Test Description
+              //- div.hiddenDescr Test Description
 
     div(class='moviesByGenre')
       h2 Movie Genres

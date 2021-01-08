@@ -119,6 +119,8 @@ input:focus {
     align-self: center;
 }
 
+
+/* FOOTER */
 footer {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -144,6 +146,10 @@ footer .connectWithUs {
 
 .siteLinks {
     justify-self: right;
+}
+
+.siteLinks a {
+    font-size: 0.75rem;
 }
 
 .connectWithUs {
@@ -175,4 +181,27 @@ small {
     font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
     font-size: 12px;
     line-height: 1.15;
+}
+
+/* ERRORS */
+.errors-container {
+    width: auto;
+    margin: 20px 50px 0 50px;
+    background-color: rgba(255, 0, 0, 0.3);
+    border-radius: 5px;
+    text-align: center;
+}
+
+.errors-container p {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.errors-container ul {
+    padding: 5px 10px 5px 25px;
+}
+
+.errors-container li {
+    color: crimson;
+    text-align: left;
 }
