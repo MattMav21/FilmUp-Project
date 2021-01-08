@@ -1,12 +1,14 @@
 extends layout
 
 block content
-  h1.movieHeader Movies
-  div.movieContainer
-    each movie in movies
-      div.movieBlock
-          a(href=`/movies/${movie.id}`)
-            img(src= movie.posterPath width=200 height=250 id= 'moviePoster')
-            div.hiddenDescr Test Description
-
-
+  div.moviesPageContainer
+    if errors
+      +validationErrorSummary(errors)
+    else
+      h1.movieHeader Movies
+      div.movieContainer
+        each movie in movies
+          div.movieBlock
+              a(href=`/movies/${movie.id}`)
+                img(src= movie.posterPath id= 'moviePoster')
+                //- div.hiddenDescr Test Description
