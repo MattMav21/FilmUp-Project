@@ -27,6 +27,17 @@ router.get('/:id', requireAuth, asyncHandler(async (req, res) => {
     res.render('vault', { vault, vaultedMovies })
 }))
 
+router.delete('/:id', requireAuth, asyncHandler(async (req, res) => {
+    const vaultMovie = await db.VaultMovie.findOne({
+        where: {
+            movieId: req.body.movieId,
+            vaultId: req.params.id
+        }
+    })
+    await vaultMovie.destroy()
+    res.json('The movie has been deleted!')
+}))
+
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
     // We want a route for when a user creates a vault
     const user = await db.User.findOne({ where: { id: req.session.auth.userId } });

@@ -78,3 +78,14 @@ h1 {
     sans-serif;
     border-radius: 3px;
 }
+
+#delete-movie {
+    background-color: #409D69;
+    color: #fff;
+    border-radius: 3px;
+    font-family: "Lato",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
