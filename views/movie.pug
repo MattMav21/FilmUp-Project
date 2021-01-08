@@ -20,8 +20,6 @@ block content
         div(class='date')= review.updatedAt
         div(class='review editable')= review.content
           form(class='edit' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/edit`)
-            button(class='edit-button' type='submit') edit
+            button(class='edit-button' type='submit') Edit
           form(class='delete' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/delete`)
-            button(class='delete-button' type='submit') delete
-          //- form(class='delete' method="POST" action=`/movies/${movie.id}/reviews/${movie.Reviews}`)
-          //-   button(class='delete-button' type='submit') delete
+            button(class='delete-button' type='submit') Delete
