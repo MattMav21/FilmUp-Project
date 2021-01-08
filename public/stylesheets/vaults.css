@@ -16,11 +16,20 @@
 }
 
 .vaultBlock {
-    text-align: center;
-    height: 250px;
-    width: 200px;
+    /* text-align: center; */
+    height: 60px;
+    width: 100px;
     margin: 10px;
     background: #eee;
+    background-color:goldenrod;
+    border: solid black 1px;
+    padding-top: .6rem;
+    font-family: "Lato",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+    border-radius: 3px;
 }
 
 h1 {
@@ -28,9 +37,12 @@ h1 {
     background: #eee;
 }
 
+
+
 #link:hover {
     background-color: rgb(53, 34, 19);
-    color: blue;
+    color: #eee;
+    text-decoration: none;
 }
 
 #createVault {
