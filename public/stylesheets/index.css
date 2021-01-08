@@ -99,11 +99,19 @@ input:focus {
 }
 
 .form-div form {
-    margin: 20px;
+    margin: 20px 20px 0 20px;
     display: flex;
     flex-direction: column;
     text-align: left;
     align-items: stretch;
+}
+
+.form-div .form-demoUser {
+    margin: 0 20px;
+}
+
+.form-demoUser button {
+    margin: 0 10px;
 }
 
 .form-div form div {

@@ -12,4 +12,9 @@ block content
             div
             +formField("Password", "password", null , "password")
             button(type='submit' class="nav-button") Login
+        form(class="form-demoUser" action="/login", method="post")
+            input(type='hidden' name='_csrf' value=token)
+            input(type="hidden", name="email", value="demouser@filmup.com")
+            input(type="hidden", name="password", value="password")
+            button(type='submit' class="nav-button") Demo Account
         div: small: a(href="/signup") Don't have an account? Sign up

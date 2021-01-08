@@ -28,4 +28,4 @@ block content
       ul
         each genre in genres
           //- TODO: IMPLEMENT LINK TO SHOW LIST OF MOVIES IN A GENRE
-          li: a(href="/")= genre.name
+          li: a(href=`/movies/genre/${genre.id}`)= genre.name
