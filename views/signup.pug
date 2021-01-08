@@ -3,9 +3,9 @@ extends layout
 include utils.pug
 
 block content
-    +validationErrorSummary(errors)
     div(class="form-div")
         h2 Sign up to FilmUp
+        +validationErrorSummary(errors)
         form(action="/signup" method="POST")
             input(type='hidden' name='_csrf' value=token)
             +formField("First Name", "firstName", 'Enter your first name')
@@ -16,7 +16,12 @@ block content
             div
             +formField("Password", "password", null , "password")
             div
-            +formField("Confirm Password", "confirmPassword", null, password)
+            +formField("Confirm Password", "confirmPassword", null, "password")
             button(type='submit' class="nav-button") Register
+        form(class="form-demoUser" action="/login", method="post")
+            input(type='hidden' name='_csrf' value=token)
+            input(type="hidden", name="email", value="demouser@filmup.com")
+            input(type="hidden", name="password", value="password")
+            button(type='submit' class="nav-button") Demo Account
         div
             p: a(href="/login") Already have an account? Log in

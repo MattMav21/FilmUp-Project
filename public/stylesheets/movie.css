@@ -1,3 +1,7 @@
+.moviesPageContainer {
+  margin: 20px;
+}
+
 .movieContainer {
   display: flex;
   justify-content: center;
@@ -9,11 +13,17 @@
   text-align:center;
 }
 
+.mainMoviePoster {
+  height: 300px;
+}
+
 .movieBlock {
     text-align: center;
-    height: 250px;
-    width: 200px;
     margin: 10px;
+}
+
+.movieBlock img {
+  height: 250px;
 }
 
 #moviePoster::after {
@@ -57,10 +67,8 @@
 }
 
 .mainMovie {
-  float: left;
   width: auto;
-  margin-top: 15px;
-  margin-left: 5px;
+  margin: 20px;
   font-size: 12px;
   min-height: 400px;
   background: #FFFFFF;
@@ -76,7 +84,6 @@
 }
 
 #moviecol {
-  width: 155px;
   text-align: center;
   float: left;
   margin: 0 20px 10px 0;
