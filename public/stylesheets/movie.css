@@ -11,9 +11,11 @@
 
 .movieBlock {
     text-align: center;
-    height: 250px;
-    width: 200px;
     margin: 10px;
+}
+
+.movieBlock img {
+  height: 250px;
 }
 
 #moviePoster::after {
