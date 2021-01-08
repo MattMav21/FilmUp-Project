@@ -8,20 +8,15 @@ block content
         h2 Sign up to FilmUp
         form(action="/signup" method="POST")
             input(type='hidden' name='_csrf' value=token)
-            label(for="firstName") First Name
-            input(type='text' name='firstName' placeholder='Enter your first name')
+            +formField("First Name", "firstName", 'Enter your first name')
             div
-            label(for="lastName") Last Name
-            input(type='text' name='lastName' placeholder='Enter your last name')
+            +formField("Last Name", "lastName", 'Enter your last name')
             div
-            label(for="email") E-mail
-            input(type='email' name='email' placeholder='Enter your email address')
+            +formField("E-mail", "email", 'Enter your email address' , "email")
             div
-            label(for="password") Password
-            input(type='password' name='password')
+            +formField("Password", "password", null , "password")
             div
-            label(for="confirmPassword") Confirm Password
-            input(type='password' name='confirmPassword')
+            +formField("Confirm Password", "confirmPassword", null, password)
             button(type='submit' class="nav-button") Register
         div
             p: a(href="/login") Already have an account? Log in

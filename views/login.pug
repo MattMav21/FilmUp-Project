@@ -3,15 +3,13 @@ extends layout
 include utils.pug
 
 block content
-    +validationErrorSummary(errors)
     div(class="form-div")
         h2 Sign in to FilmUp
+        +validationErrorSummary(errors)
         form(action="/login" method="POST")
             input(type='hidden' name='_csrf' value=token)
-            label(for="email") E-mail
-            input(type='email' name='email' placeholder='Enter your email address')
+            +formField("E-mail", "email", 'Enter your email address' , "email")
             div
-            label(for="password") Password
-            input(type='password' name='password')
+            +formField("Password", "password", null , "password")
             button(type='submit' class="nav-button") Login
         div: small: a(href="/signup") Don't have an account? Sign up

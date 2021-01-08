@@ -5,3 +5,10 @@ mixin validationErrorSummary(errors)
             ul
                 each error in errors
                     li= error
+
+mixin connectWithUsLinks(gitHubLink, personName)
+    div: a(href=gitHubLink): img(class="connectWithUs-github" src="/images/githubicon.png", alt=personName)
+
+mixin formField(labelText, fieldName, fieldPlaceholder = null, fieldType = 'text')
+    label(for=fieldName)= labelText
+    input(type=fieldType id=fieldName name=fieldName placeholder=fieldPlaceholder)
