@@ -22,7 +22,6 @@ router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
 }))
 
 router.post('/:id/reviews', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-  console.log("POSTING REVIEW")
   const id = req.params.id
   const movie = await db.Movie.findByPk(id, { include: db.Genre })
   const review = db.WatchedMovie.build({
@@ -36,7 +35,6 @@ router.post('/:id/reviews', requireAuth, csrfProtection, asyncHandler(async (req
 }));
 
 router.post('/:id/reviews/:reviewId/edit', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-  console.log("EDITING REVIEW")
   const id = req.params.id;
   const movie = await db.Movie.findByPk(id, { include: db.Genre })
   const { reviewId } = req.params;
@@ -54,7 +52,6 @@ router.post('/:id/reviews/:reviewId/edit/edited', requireAuth, csrfProtection, a
 }));
 
 router.post('/:id/reviews/:reviewId/delete', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-  console.log("DELETING REVIEW")
   const id = req.params.id;
   const { reviewId } = req.params;
   const review = await db.WatchedMovie.findByPk(reviewId);
@@ -64,7 +61,6 @@ router.post('/:id/reviews/:reviewId/delete', requireAuth, csrfProtection, asyncH
 }));
 
 router.post(/\/\d+/, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-  console.log("WHAT IS THIS???")
   if (req.body.addToVault) {
     const vaultedMovies = await db.VaultMovie.findAll({ where: { vaultId: req.body.vaultId, movieId: req.body.movieId } })
     if (!vaultedMovies[0]) {

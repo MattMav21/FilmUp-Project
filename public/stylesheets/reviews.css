@@ -3,6 +3,7 @@
     width: 500px;
     height: fit-content(500px);
     padding: 20px;
+    align-self: center;
 }
 
 .review-button {
@@ -17,16 +18,22 @@
 }
 
 .review {
+    height: 50px;
+    width: 800px;
     background-color: red;
     border: 1px solid red;
     display: flex;
     padding: 20px 5px;
+    align-items: center;
+    justify-content: end;
 }
 
 .edit-button {
     position: relative;
+    left: 70px;
 }
 
 .delete-button {
     position: relative;
+    left: 70px;
 }
