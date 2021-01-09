@@ -1,6 +1,30 @@
-# Express Project Skeleton
+# FilmUp
 
-Use this project skeleton as a starting point for structuring your app. Things to note
-* Sequelize configuration has not yet been added -- you will need to set that up yourself
-* You may find yourself wanting to use javascript -- js files can be added in `public/javascripts` and should be appended to the Pug templates as needed
-* CSS files can go in `public/stylesheets` and also will need to be added to Pug templates
+## Description
+FilmUp is a web application inspired on GoodReads, but focused on movies instead of books. The application allows users search, collect and review movies.
+
+## Development environment configuration
+[Instructions on configuring development environment]
+
+## Technologies
+* JavaScript
+* NodeJS
+* Express
+* Pug
+
+## Link to live application
+* (https://filmup-project.herokuapp.com/)
+
+## Discussion
+
+### Key Features
+#### Hybrid Database and External API search
+Implemented a site-wide search bar that queries the postgresql database and renders the movies found based  on movie titles and a search term.
+If no movies are found, the application queries themoviedb.org external API, displays movies found.
+Once a user selects a movie from the external API, the application adds it to the database and renders the movie as if it were in the application all along.
+
+#### User Movie Vaults
+The user has the ability to curate a personal collection of movies with movie 'vaults'. The user can create and delete vaults, as well as add or remove movies from vaults.
+
+### Key Challenges
+* Implementation of AJAX (Asynchronous JavaScript and XML) code using internal API routes for deleting movies from vaults without prompting a page refresh.
