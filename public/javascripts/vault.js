@@ -2,7 +2,7 @@ const handleDelete = (vaultId, movieId) => {
     const movieContainer = document.querySelector(".movieContainer")
     return async () => {
         try {
-            const res = await fetch(`http://localhost:8080/vaults/${vaultId}`, {
+            const res = await fetch(`/vaults/${vaultId}`, {
                 method: "DELETE",
                 body: JSON.stringify({
                     movieId: movieId

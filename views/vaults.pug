@@ -1,21 +1,9 @@
 extends layout
 
 block content
-    //- table
-    //-     thead: tr
-    //-         th My Vaults
-    //-     tbody
-    //-         each vault in vaults
-    //-             tr
-    //-                 div.vaultBlock
-    //-                     td= vault.name
-    //-                         a(href=`http://localhost:8080/movies/${vault.id}`)
-    //-     form(method="post" action="/vaults")
-    //-         input(type="text" name="name" required)
-    //-         div
-    //-         button(type="submit") Create Vault
     form(method="post" action="/vaults")
         div.formContainer
+            input(type="hidden" name="_csrf" value=token)
             input(type="text" name="name" placeholder="Vault name here" id="vaultInput" required)
             div.vaultSpace
             button(type="submit" id="createVault") Create Vault
