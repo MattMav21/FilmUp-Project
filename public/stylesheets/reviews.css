@@ -1,39 +1,75 @@
 
+.submission {
+    border-radius: 3px;
+    border: solid thin #DCD6CC;
+    color: #333333;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    padding: 5px;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 .review-area {
     width: 500px;
     height: fit-content(500px);
     padding: 20px;
     align-self: center;
+    position: relative;
+    background-color: lightgray;
 }
 
 .review-button {
-    background-color: yellow;
+    position: relative;
+    left: 200px;
+    background-color: #409d69;
+    color: #FFF;
+    border-radius: 3px;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    overflow: hidden;
+    text-align: center;
+    word-wrap: normal;
+    white-space: nowrap;
 }
 
+
 .review-collection {
-    width: 500px;
+    width: 100%;
     height: auto;
     display: grid;
+    gap: 10px;
     padding: 30px 0;
 }
 
-.review {
-    height: 50px;
-    width: 800px;
-    background-color: red;
-    border: 1px solid red;
-    display: flex;
-    padding: 20px 5px;
-    align-items: center;
-    justify-content: end;
+.edit-button {
+    position: absolute;
+    right: 75px;
 }
 
-.edit-button {
+.date {
     position: relative;
-    left: 70px;
+    top: 10px;
+}
+
+.user {
+    position: relative;
+    top: 20px;
 }
 
 .delete-button {
-    position: relative;
-    left: 70px;
+    position: absolute;
+    right: 20px;
+}
+
+.review {
+    width: 100%;
+    background-color: grey;
+    border: 1px solid black;
+    display: flex;
+    padding: 20px 5px;
+    align-items: center;
+    font-family: 14px "Lato", "Helvetica Neue", "Helvetica", sans-serif;
 }
