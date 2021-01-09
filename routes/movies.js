@@ -38,10 +38,13 @@ router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
 router.post('/:id/reviews', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const id = req.params.id
   const movie = await db.Movie.findByPk(id, { include: db.Genre })
+  const user = await db.User.findByPk(req.session.auth.userId);
+  const email = user.dataValues.email;
   const review = db.WatchedMovie.build({
     userId: req.session.auth.userId,
     content: req.body.content,
     movieId: movie.id,
+    email: email,
   });
 
   review.save();

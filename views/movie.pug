@@ -36,22 +36,24 @@ block content
         br
         div= `Genre: ${movie.Genre.name}`
         div
-  h1(class='review-header')= "Reviews"
+  h1(class='review-header submission')= "Reviews"
   div
-  form(method='POST' action=`/movies/${movie.id}/reviews`)
+  form(class='submission' method='POST' action=`/movies/${movie.id}/reviews`)
     input(type='hidden' name='_csrf' value=token)
-    input(class='review-area' name='content')
+    textarea(contenteditable="true" class='review-area submission' name='content' placeholder='Add a review!')
     div
-    button(class='review-button' type='submit') Submit Review!
+    button(class='review-button submission' type='submit') Submit Review!
     div
   div(class='review-collection')
     each review in movie.Reviews
       if review.content
+        div(class='user')= user.dataValues.firstName
         div(class='date')= review.updatedAt
-        div(class='review editable')= review.content
-          form(class='edit' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/edit`)
-            input(type='hidden' name='_csrf' value=token)
-            button(class='edit-button' type='submit') Edit
-          form(class='delete' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/delete`)
-            input(type='hidden' name='_csrf' value=token)
-            button(class='delete-button' type='submit') Delete
+        div(class='review')= review.content
+          div(class='review-buttons')
+            form(class='edit' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/edit`)
+              input(type='hidden' name='_csrf' value=token)
+              button(class='edit-button button' type='submit') Edit
+            form(class='delete' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/delete`)
+              input(type='hidden' name='_csrf' value=token)
+              button(class='delete-button button' type='submit') Delete

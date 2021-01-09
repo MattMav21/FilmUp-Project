@@ -11,15 +11,15 @@ block content
   div
   form(method='POST' action=`/movies/${movie.id}/reviews`)
     input(type='hidden' name='_csrf' value=token)
-    input(class='review-area' name='content')
+    input(class='review-area submission' name='content')
     div
-    button(class='review-button' type='submit') Submit Review!
+    button(class='review-button submission' type='submit') Submit Review!
     div
   div(class='review-collection' method="POST" action=`/movies/`)
-
-
-  div(class='review editable')
+  h1 Edit Your Review
+  div(class='review-edit submission')
     form(method='POST' action=`/movies/${movie.id}/reviews/${review.id}/edit/edited`)
       input(type='hidden' name='_csrf' value=token)
-      input(name='content' value=`${review.content}`)
-      button(type='submit') Edit Review
+      textarea(name='content' value=`${review.content}`)= review.content
+      div(class='review-buttons')
+        button(class='edit-button' type='submit') Edit Review

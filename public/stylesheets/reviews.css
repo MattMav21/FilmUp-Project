@@ -1,39 +1,115 @@
 
+.submission {
+    border-radius: 3px;
+    border: solid thin #DCD6CC;
+    color: #333333;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    padding: 5px;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 .review-area {
     width: 500px;
     height: fit-content(500px);
     padding: 20px;
     align-self: center;
+    position: relative;
+    background-color: lightgray;
 }
 
 .review-button {
-    background-color: yellow;
+    position: relative;
+    left: 200px;
+    background-color: #409d69;
+    color: #FFF;
+    border-radius: 3px;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
 }
+
 
 .review-collection {
-    width: 500px;
+    width: 100%;
     height: auto;
     display: grid;
-    padding: 30px 0;
+    gap: 10px;
+    padding: 30px 15px;
 }
 
+
+.date {
+    position: relative;
+    top: 10px;
+}
+
+.user {
+    position: relative;
+    top: 20px;
+}
+
+
 .review {
-    height: 50px;
-    width: 800px;
-    background-color: red;
-    border: 1px solid red;
+    width: 50%;
+    overflow-wrap: break-word;
+    background-color:rgb(243, 241, 235);
+    border: 1px solid black;
+    /* display: flex; */
+    padding: 20px 5px 0 5px;
+    margin: 0 0 25px 0;
+    /* align-items: center; */
+    font-family: 14px "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    flex-direction: row;
+    justify-content: space-between;
+    /* justify-content: flex-end; */
+}
+
+.review-buttons {
     display: flex;
-    padding: 20px 5px;
-    align-items: center;
-    justify-content: end;
+    position: relative;
+    top: 23px;
+    justify-content: flex-start;
+    justify-content: space-between;
+    width: 120px;
 }
 
 .edit-button {
-    position: relative;
-    left: 70px;
+    /* position: relative; */
+    border-radius: 3px;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: green;
+    color: white;
+    font-weight: bold;
 }
 
 .delete-button {
-    position: relative;
-    left: 70px;
+    border-radius: 3px;
+    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.edit-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.review-edit {
+    width: auto;
+    background-color:rgb(243, 241, 235);
+    border: 1px solid black;
+    padding: 30px;
+    margin: 0 0 25px 0;
+    font-family: 14px "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+    flex-direction: row;
+    justify-content: space-between;
 }
