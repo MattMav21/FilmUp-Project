@@ -19,8 +19,9 @@ block content
                 input(type="hidden", name="releaseDate", value=movie.releaseDate)
                 input(type="hidden", name="posterPath", value=`https://image.tmdb.org/t/p/w342/${movie.posterPath}`)
                 input(type="hidden", name="genreId", value=movie.genreId)
-                button(type='submit' class="nav-button")= movie.title
-              p= movie.releaseYear
+                button(type='submit' class="nav-button" id="addMovieButton")
+                  p= movie.title
+                  p= movie.releaseYear
                 //- div.hiddenDescr Test Description
     else
       h1.movieHeader Movies
