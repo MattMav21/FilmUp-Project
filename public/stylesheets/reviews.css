@@ -54,6 +54,7 @@
 
 .review {
     width: 50%;
+    overflow-wrap: break-word;
     background-color:rgb(243, 241, 235);
     border: 1px solid black;
     /* display: flex; */
