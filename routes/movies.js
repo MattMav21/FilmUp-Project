@@ -1,4 +1,5 @@
 var express = require('express');
+const Sequelize = require('sequelize');
 var router = express.Router();
 const db = require('../db/models')
 const { asyncHandler, csrfProtection } = require('./utils');
@@ -10,6 +11,18 @@ router.get('/', asyncHandler(async (req, res) => {
   res.render('movies', { movies })
 }));
 
+router.get('/genre/:id', csrfProtection, asyncHandler(async (req, res) => {
+  const genreId = req.params.id;
+
+  const movies = await db.Movie.findAll({
+    include: db.Genre, where: { genreId }
+  });
+
+  console.log(movies[0]);
+
+  res.render('movies', { movies, token: req.csrfToken() });
+}));
+
 router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
   const id = req.path.split('/')[1]
   const movie = await db.Movie.findByPk(id, { include: [db.Genre, { model: db.WatchedMovie, as: 'Reviews' }] })
@@ -19,7 +32,7 @@ router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
   } else {
     res.render('movie', { movie })
   }
-}))
+}));
 
 router.post('/:id/reviews', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const id = req.params.id
@@ -97,5 +110,29 @@ router.post('/:id', requireAuth, csrfProtection, asyncHandler(async (req, res) =
 
 
 // }))
+router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
+  const errors = ["We couldn't find any movies that match your search"];
+
+  const searchTerm = `%${req.body.query}%`;
+
+  if (req.body.query) {
+    const movies = await db.Movie.findAll({
+      where: {
+        title: {
+          [Sequelize.Op.iLike]: searchTerm
+        }
+      }
+    });
+
+    if (!movies.length) return res.render('movies', { movies, errors, token: req.csrfToken() });
+
+    res.render('movies', { movies, token: req.csrfToken() });
+
+  } else {
+    res.redirect("/");
+  }
+}));
+
+
 
 module.exports = router;

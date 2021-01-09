@@ -16,6 +16,7 @@ block content
     //-         button(type="submit") Create Vault
     form(method="post" action="/vaults")
         div.formContainer
+            input(type="hidden" name="_csrf" value=token)
             input(type="text" name="name" placeholder="Vault name here" id="vaultInput" required)
             div.vaultSpace
             button(type="submit" id="createVault") Create Vault

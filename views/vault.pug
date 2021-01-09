@@ -4,6 +4,7 @@ append head
     script(src="/javascripts/vault.js" type="module" defer)
 block content
     form(method="post" action=`/vaults/${vault.id}`)
+        input(type="hidden" name="_csrf" value=token)
         h1= vault.name
         div.movieContainer
             each vaultedMovie in vault.Movies
