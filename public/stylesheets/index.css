@@ -17,7 +17,7 @@ input:focus {
 .mainContentContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 0.5fr 1.5fr 1;
     gap: 10px 10px;
     justify-items: center;
     align-items: center;
@@ -25,7 +25,8 @@ input:focus {
 
 .description {
     text-align: center;
-    margin: 2em;
+    padding: 2em;
+    width: 100%;
 }
 
 .description h2 {
@@ -37,7 +38,7 @@ input:focus {
 
 .recentlyAdded {
     grid-column: 2 / 3;
-    grid-row: 1 / 3;
+    grid-row: 1 / 4;
     text-align: center;
     border: thin solid #D8D8D8;
     border-radius: 2px;
@@ -65,26 +66,43 @@ input:focus {
 }
 
 .moviesByGenre {
+    width: 100%;
+    padding: 0 2em;
     align-self: start;
-}
-
-.moviesByGenre ul {
     display: grid;
+    grid-template-areas:
+        "title title";
     grid-template-columns: 1fr 1fr;
     gap: 5px 20px;
 }
 
-.moviesByGenre h2 {
-    text-align: center;
-    padding: 1em;
-    text-transform: uppercase;
-    font-weight: bold;
+#genreTitle {
     color: #333333;
+    background-color: transparent;
 }
 
-.moviesByGenre li {
-    text-align: left;
-    margin-left: 1em;
+.moviesByGenre h2 {
+    text-align: center;
+    grid-area: title;
+    padding: 0.5em;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+}
+
+.moviesByGenre h2:hover {
+    text-emphasis: none;
+    background-color: #1f4e33;
+}
+
+.genreBlock > a:hover {
+    text-emphasis: none;
+}
+
+.genreBlock {
+    margin: 0 0.5em;
+    background-color:#409D69;
+    border-radius: 3px;
 }
 
 .form-div {
