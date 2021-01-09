@@ -4,6 +4,14 @@ block content
   div.moviesPageContainer
     if errors
       +validationErrorSummary(errors)
+    else if newMoviesArray
+      h1.movieHeader Movies
+      div.movieContainer
+        each movie in newMoviesArray
+          div.movieBlock
+              a(href=`/movies/${movie.id}`)
+                img(src= movie.posterPath id= 'moviePoster')
+                //- div.hiddenDescr Test Description
     else
       h1.movieHeader Movies
       div.movieContainer

@@ -1,9 +1,11 @@
-var express = require('express');
+const express = require('express');
 const Sequelize = require('sequelize');
-var router = express.Router();
-const db = require('../db/models')
+const fetch = require("node-fetch");
+const router = express.Router();
+const db = require('../db/models');
 const { asyncHandler, csrfProtection } = require('./utils');
-const { requireAuth } = require('../auth')
+const { requireAuth } = require('../auth');
+const { movieDbApiKey } = require('../config');
 
 router.get('/', asyncHandler(async (req, res) => {
   const movies = await db.Movie.findAll()
@@ -107,7 +109,39 @@ router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
       }
     });
 
-    if (!movies.length) return res.render('movies', { movies, errors, token: req.csrfToken() });
+    if (!movies.length) {
+
+      const encodedSearchTerm = encodeURIComponent(req.body.query);
+
+      try {
+        const response = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${movieDbApiKey}&language=en-US&query=${encodedSearchTerm}&page=1&include_adult=false`)
+
+        if (!response.ok) {
+          throw res;
+        }
+
+        const responseJSON = await response.json();
+
+        const newMoviesArray = responseJSON.results.map(movie => {
+          return {
+            title: movie.original_title,
+            description: movie.overview,
+            releaseDate: movie.release_date,
+            posterPath: movie.poster_path,
+            genreId: movie.genre_ids[0],
+          }
+        });
+
+        console.log("MOVIE ARRAY", newMoviesArray);
+
+        return res.render('movies', { newMoviesArray, token: req.csrfToken() });
+
+
+      } catch (err) {
+        console.error(err);
+        return res.render('movies', { movies, errors, token: req.csrfToken() });
+      }
+    }
 
     res.render('movies', { movies, token: req.csrfToken() });
 
