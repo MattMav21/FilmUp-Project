@@ -23,6 +23,7 @@ router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
 
 router.post('/:id/reviews', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
   const id = req.params.id
+  console.log(req.params)
   const movie = await db.Movie.findByPk(id, { include: db.Genre })
   const user = await db.User.findByPk(req.session.auth.userId);
   const email = user.dataValues.email;
