@@ -44,10 +44,6 @@
   display: none
 }
 
-#moviePoster:hover + .hiddenDescr {
-  display: block;
-  color: red
-}
 
 .movieHeader {
   display: flex;

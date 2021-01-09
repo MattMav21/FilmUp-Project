@@ -76,12 +76,26 @@ router.post('/:id', requireAuth, csrfProtection, asyncHandler(async (req, res) =
     if (!watchedMovie[0]) {
       const watchMovie = await db.WatchedMovie.create({ userId: req.session.auth.userId, movieId: req.body.movieId })
       res.json(watchMovie)
-      // res.redirect(`/movies/${req.body.movieId}`)
-    } else {
-      throw new Error('Movie already watched!')
     }
+    // res.redirect(`/movies/${req.body.movieId}`)
+    // } else {
+    //   throw new Error('Movie already watched!')
+    // }
   }
 }))
 
+// router.delete(':id', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+
+//   const watchedMovie = await db.watchedMovie.findOne({
+//     where: {
+//       movieId: req.body.movieId,
+//       usertId: req.session.auth.userId
+//     }
+//   })
+//   await watchedMovie.destroy()
+//   res.json()
+
+
+// }))
 
 module.exports = router;
