@@ -15,21 +15,21 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.get('/genre/:id', csrfProtection, asyncHandler(async (req, res) => {
   const genreId = req.params.id;
-
   const movies = await db.Movie.findAll({
-    include: db.Genre, where: { genreId } });
-
+    include: db.Genre, where: { genreId }
+  });
   console.log(movies[0]);
-
   res.render('movies', { movies, token: req.csrfToken() });
 }));
 
-router.get(/\/\d+/, csrfProtection, asyncHandler(async (req, res) => {
-  const id = req.path.split('/')[1]
-  const movie = await db.Movie.findByPk(id, { include: [db.Genre, {model: db.WatchedMovie, as: 'Reviews'}]})
+router.get('/:id', csrfProtection, asyncHandler(async (req, res) => {
+  const id = req.params.id
+  const movie = await db.Movie.findByPk(id, { include: [db.Genre, { model: db.WatchedMovie, as: 'Reviews' }] })
+  const watched = await db.WatchedMovie.findOne({ where: { movieId: id, userId: req.session.auth.userId } })
+
   if (res.locals.authenticated) {
     const vaults = await db.Vault.findAll({ where: { userId: req.session.auth.userId } })
-    res.render('movie', { movie, vaults, token: req.csrfToken() })
+    res.render('movie', { movie, vaults, watched, token: req.csrfToken() })
   } else {
     res.render('movie', { movie })
   }
@@ -77,33 +77,36 @@ router.post('/:id/reviews/:reviewId/delete', requireAuth, csrfProtection, asyncH
   res.redirect(`/movies/${id}`);
 }));
 
-router.post(/\/\d+/, requireAuth, csrfProtection, asyncHandler(async (req, res) => {
-  if (req.body.addToVault) {
-    const vaultedMovies = await db.VaultMovie.findAll({ where: { vaultId: req.body.vaultId, movieId: req.body.movieId } })
-    if (!vaultedMovies[0]) {
-      await db.VaultMovie.create({ vaultId: req.body.vaultId, movieId: req.body.movieId })
-      res.redirect(`/movies/${req.body.movieId}`)
-    } else {
-      throw new Error('Movie already in vault')
-    }
-  } else if (req.body.watched) {
-    const watchedMovie = await db.WatchedMovie.findAll({ where: { userId: req.session.auth.userId, movieId: req.body.movieId } })
+router.post('/:id/watched', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const watched = await db.WatchedMovie.findOne({ where: { movieId: req.body.movieId, userId: req.session.auth.userId } })
 
-    if (!watchedMovie[0]) {
-      await db.WatchedMovie.create({ userId: req.session.auth.userId, movieId: req.body.movieId })
-      res.redirect(`/movies/${req.body.movieId}`)
-    } else {
-      throw new Error('Movie already watched!')
-    }
+
+  if (!watched) {
+    await db.WatchedMovie.create({ userId: req.session.auth.userId, movieId: req.body.movieId })
+    res.redirect(`/movies/${req.body.movieId}`)
+  } else {
+    watched.destroy()
+    res.redirect(`/movies/${req.body.movieId}`)
   }
+}))
+
+
+router.post('/:id/vaulted', requireAuth, csrfProtection, asyncHandler(async (req, res) => {
+  const vaultedMovie = await db.VaultMovie.findAll({ where: { vaultId: req.body.vaultId, movieId: req.body.movieId } })
+
+  if (!vaultedMovie[0]) {
+    await db.VaultMovie.create({ vaultId: req.body.vaultId, movieId: req.body.movieId })
+    res.redirect(`/movies/${req.body.movieId}`)
+  } else {
+    throw new Error('Movie already in vault!')
+  }
+
 }))
 
 // ROUTE TO SEARCH FOR MOVIES AND QUERY EXTERNAL API
 router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
   const errors = ["We couldn't find any movies that match your search"];
-
   const searchTerm = `%${req.body.query}%`;
-
   if (req.body.query) {
     const movies = await db.Movie.findAll({
       where: {
@@ -112,6 +115,7 @@ router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
         }
       }
     });
+    if (!movies.length) return res.render('movies', { movies, errors, token: req.csrfToken() });
 
     if (!movies.length) {
 
@@ -148,7 +152,6 @@ router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
     }
 
     res.render('movies', { movies, token: req.csrfToken() });
-
   } else {
     res.redirect("/");
   }
@@ -156,7 +159,7 @@ router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
 
 router.post('/newMovie/', csrfProtection, asyncHandler(async (req, res) => {
 
-  const { title, description, releaseDate, posterPath} = req.body;
+  const { title, description, releaseDate, posterPath } = req.body;
 
   const newMovie = db.Movie.build({
     title,
@@ -170,6 +173,7 @@ router.post('/newMovie/', csrfProtection, asyncHandler(async (req, res) => {
 
   res.redirect(`/movies/${newMovie.id}`);
 }));
+
 
 
 module.exports = router;

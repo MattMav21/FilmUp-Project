@@ -61,10 +61,6 @@
   display: none
 }
 
-#moviePoster:hover + .hiddenDescr {
-  display: block;
-  color: red
-}
 
 .movieHeader {
   display: flex;
@@ -124,7 +120,7 @@
 
 .watchedbutton {
   border-width: 0px;
-  width: 140px;
+  /* width: 140px; */
   background-color: #409d69;
   color: #FFF;
   border-radius: 3px;
@@ -167,5 +163,10 @@
   text-shadow: none;
   align-items: flex-start;
   font: 400 13.3333px Arial;
+}
+
+#addToVault {
+  font-size: 10px;
+  background-color: #409d69;
 
 }

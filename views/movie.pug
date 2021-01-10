@@ -1,5 +1,7 @@
 extends layout
 
+include utils.pug
+
 append head
   script(src="/javascripts/movie.js" type="module" defer)
 
@@ -11,22 +13,23 @@ block content
         div.watchedsection
           div.watchedbutton
             if vaults
-              form(action=`/movies/${movie.id}` method='post')
+              form(action=`/movies/:id/watched` method='post')
                 input(type='hidden' name='_csrf' value=token)
-                input(type='hidden' name='movieId' value=movie.id)
-                input(type='hidden' name='watched' value='watched')
+                input#movieId(type='hidden' name='movieId' value=movie.id)
                 button#watched(type="submit")
-                  span#buttonSpan Unwatched
+                  if watched
+                    span#watchedSpan Watched
+                  else
+                    span#watchedSpan Unwatched
             if vaults
-              form(action=`/movies/${movie.id}` method='post')
+              form(action=`/movies/:id/vaulted` method='post')
                 input(type='hidden' name='_csrf' value=token)
                 input(type='hidden' name='movieId' value=movie.id)
-                input(type='hidden' name='addToVault' value='added')
-                button#addToVault(type="submit")
-                  span#buttonSpan Add To Vault
-                select(name='vaultId')
+                select#select(name='vaultId')
+                  option(value='') --Choose Vault--
                   each vault in vaults
                     option(value=vault.id)= vault.name
+                button#addToVault(type="submit") ➕
       div#moviecont
         h1#movietitle.movieHeader= movie.title
         br
