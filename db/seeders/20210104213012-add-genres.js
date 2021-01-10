@@ -13,17 +13,25 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('Genres', [
-      { name: 'Action', createdAt: new Date(), updatedAt: new Date() }, //1
-      { name: 'Adventure', createdAt: new Date(), updatedAt: new Date() }, //2
-      { name: 'Animation', createdAt: new Date(), updatedAt: new Date() }, //3
-      { name: 'Comedy', createdAt: new Date(), updatedAt: new Date() }, //4
-      { name: 'Crime', createdAt: new Date(), updatedAt: new Date() }, //5
-      { name: 'Drama', createdAt: new Date(), updatedAt: new Date() }, //6
-      { name: 'Musical', createdAt: new Date(), updatedAt: new Date() }, //7
-      { name: 'Mystery', createdAt: new Date(), updatedAt: new Date() }, //8
-      { name: 'Romance', createdAt: new Date(), updatedAt: new Date() }, //9
-      { name: 'Sci-Fi', createdAt: new Date(), updatedAt: new Date() }, //10
-      { name: 'Thriller', createdAt: new Date(), updatedAt: new Date() }, //11
+      { id: 28, name: 'Action', createdAt: new Date(), updatedAt: new Date() },
+      { id: 12, name: 'Adventure', createdAt: new Date(), updatedAt: new Date() },
+      { id: 16, name: 'Animation', createdAt: new Date(), updatedAt: new Date() },
+      { id: 35, name: 'Comedy', createdAt: new Date(), updatedAt: new Date() },
+      { id: 80, name: 'Crime', createdAt: new Date(), updatedAt: new Date() },
+      { id: 99, name: 'Documentary', createdAt: new Date(), updatedAt: new Date() },
+      { id: 18, name: 'Drama', createdAt: new Date(), updatedAt: new Date() },
+      { id: 10751, name: 'Family', createdAt: new Date(), updatedAt: new Date() },
+      { id: 14, name: 'Fantasy', createdAt: new Date(), updatedAt: new Date() },
+      { id: 36, name: 'History', createdAt: new Date(), updatedAt: new Date() },
+      { id: 27, name: 'Horror', createdAt: new Date(), updatedAt: new Date() },
+      { id: 10402, name: 'Musical', createdAt: new Date(), updatedAt: new Date() },
+      { id: 9648, name: 'Mystery', createdAt: new Date(), updatedAt: new Date() },
+      { id: 10749, name: 'Romance', createdAt: new Date(), updatedAt: new Date() },
+      { id: 878, name: 'Sci-Fi', createdAt: new Date(), updatedAt: new Date() },
+      { id: 10770, name: 'TV Movie', createdAt: new Date(), updatedAt: new Date() },
+      { id: 53, name: 'Thriller', createdAt: new Date(), updatedAt: new Date() },
+      { id: 10752, name: 'War', createdAt: new Date(), updatedAt: new Date() },
+      { id: 37, name: 'Western', createdAt: new Date(), updatedAt: new Date() },
     ], {});
   },
 
