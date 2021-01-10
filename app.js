@@ -6,7 +6,7 @@ const logger = require('morgan');
 const { sequelize } = require('./db/models');
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const { sessionSecret } = require('./config')
+const { sessionSecret } = require('./config');
 const indexRouter = require('./routes/index');
 
 const moviesRouter = require('./routes/movies')
