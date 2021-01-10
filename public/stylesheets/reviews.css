@@ -29,6 +29,7 @@
     border-radius: 3px;
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: bold;
+    cursor: pointer;
 }
 
 
@@ -83,6 +84,7 @@
     background-color: green;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .delete-button {
@@ -91,6 +93,7 @@
     background-color: red;
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .edit-button:hover {
