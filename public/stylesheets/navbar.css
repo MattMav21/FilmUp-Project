@@ -63,6 +63,15 @@
     height: 100px;
 }
 
+#addMovieButton {
+    height: 40px;
+    margin-top: 5px;
+}
+
+#addMovieButton p {
+    margin: 0;
+}
+
 .search {
     border: 1px solid rgb(219, 214, 205);
     border-radius: 3px;

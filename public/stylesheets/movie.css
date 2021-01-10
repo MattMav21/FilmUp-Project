@@ -18,8 +18,15 @@
 }
 
 .movieBlock {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     text-align: center;
     margin: 10px;
+}
+
+.movieBlock form {
+  align-self: center;
 }
 
 .movieBlock img {

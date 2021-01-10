@@ -4,6 +4,25 @@ block content
   div.moviesPageContainer
     if errors
       +validationErrorSummary(errors)
+    else if newMoviesArray
+      h1.movieHeader Movies
+      h2 Please select a movie
+      div.movieContainer
+        each movie in newMoviesArray
+          if movie.posterPath
+            div.movieBlock
+              img(src= `https://image.tmdb.org/t/p/w342/${movie.posterPath}` id= 'moviePoster')
+              form(action="/movies/newMovie", method="post")
+                input(type='hidden' name='_csrf' value=token)
+                input(type="hidden", name="title", value=movie.title)
+                input(type="hidden", name="description", value=movie.description)
+                input(type="hidden", name="releaseDate", value=movie.releaseDate)
+                input(type="hidden", name="posterPath", value=`https://image.tmdb.org/t/p/w342/${movie.posterPath}`)
+                input(type="hidden", name="genreId", value=movie.genreId)
+                button(type='submit' class="nav-button" id="addMovieButton")
+                  p= movie.title
+                  p= movie.releaseYear
+                //- div.hiddenDescr Test Description
     else
       h1.movieHeader Movies
       div.movieContainer
