@@ -25,9 +25,9 @@ router.get('/genre/:id', csrfProtection, asyncHandler(async (req, res) => {
 router.get('/:id', csrfProtection, asyncHandler(async (req, res) => {
   const id = req.params.id
   const movie = await db.Movie.findByPk(id, { include: [db.Genre, { model: db.WatchedMovie, as: 'Reviews' }] })
-  const watched = await db.WatchedMovie.findOne({ where: { movieId: id, userId: req.session.auth.userId } })
 
   if (res.locals.authenticated) {
+    const watched = await db.WatchedMovie.findOne({ where: { movieId: id, userId: req.session.auth.userId } })
     const vaults = await db.Vault.findAll({ where: { userId: req.session.auth.userId } })
     res.render('movie', { movie, vaults, watched, token: req.csrfToken() })
   } else {
@@ -115,7 +115,6 @@ router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
         }
       }
     });
-    if (!movies.length) return res.render('movies', { movies, errors, token: req.csrfToken() });
 
     if (!movies.length) {
 
@@ -141,6 +140,8 @@ router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
           }
         });
 
+        newMoviesArray.splice(10);
+
         // console.log("MOVIE ARRAY", newMoviesArray);
 
         return res.render('movies', { newMoviesArray, token: req.csrfToken() });
@@ -159,14 +160,14 @@ router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
 
 router.post('/newMovie/', csrfProtection, asyncHandler(async (req, res) => {
 
-  const { title, description, releaseDate, posterPath } = req.body;
+  const { title, description, releaseDate, posterPath, genreId } = req.body;
 
   const newMovie = db.Movie.build({
     title,
     description,
     releaseDate,
     posterPath,
-    genreId: 1,
+    genreId,
   });
 
   await newMovie.save();
