@@ -1,5 +1,4 @@
 .formContainer {
-    /* background-color: red; */
     display: flex;
     padding-left: 1rem;
 }
@@ -8,17 +7,15 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    width: 100%;
     background: #eee;
-    margin: 10px auto;
     position: relative;
     text-align: center;
+    margin: 20px;
 }
 
 .vaultBlock {
-    /* text-align: center; */
     height: 55px;
-    width: 100px;
+    width: 110px;
     margin: 10px;
     background: #eee;
     background-color:#409D69;
@@ -30,6 +27,7 @@
     Arial,
     sans-serif;
     border-radius: 3px;
+    box-shadow: 1px 1px 1px 1px;
 }
 
 .vaultBlock:hover {
@@ -42,13 +40,19 @@ h1 {
     background: #eee;
 }
 
+
 #link {
-    color:#eee
+    color:#eee;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Lato",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
 }
 
 #link:hover {
-    background-color: rgb(53, 34, 19);
-    color: black;
     text-decoration: none;
 }
 
@@ -66,6 +70,13 @@ h1 {
     Arial,
     sans-serif;
     border-radius: 3px;
+    margin: 0 0.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#createVault:hover {
+    background-color: #00635D;
 }
 
 .vaultSpace {
@@ -90,22 +101,34 @@ h1 {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-weight: bold;
     font-family: "Lato",
     "Helvetica Neue",
     Helvetica,
     Arial,
     sans-serif;
     border-radius: 3px;
+    cursor: pointer;
 }
 
 #delete-movie {
     background-color: #409D69;
     color: #fff;
     border-radius: 3px;
+    font-weight: bold;
     font-family: "Lato",
     "Helvetica Neue",
     Helvetica,
     Arial,
     sans-serif;
     margin-top: .4rem;
+    cursor: pointer;
+}
+
+#delete-vault:hover {
+    background-color: #00635D;
+}
+
+#delete-movie:hover {
+    background-color: #00635D;
 }

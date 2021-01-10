@@ -165,8 +165,9 @@
   font: 400 13.3333px Arial;
 }
 
+
 #addToVault {
   font-size: 10px;
   background-color: #409d69;
-
+  cursor: pointer;
 }

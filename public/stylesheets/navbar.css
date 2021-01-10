@@ -52,6 +52,7 @@
     text-align: center;
     word-wrap: normal;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .nav-button:hover {
