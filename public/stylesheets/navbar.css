@@ -1,7 +1,7 @@
 .top-navbar {
     z-index: 1;
     width: 100%;
-    height: 40px;
+    height: 55px;
     background-color:rgb(243, 241, 235);
     display: flex;
     align-items: center;
@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    top: 40px;
+    top: 52px;
     left: 0;
     box-shadow: 1px 0 2px rgba(0,0,0,0.15);
 }
