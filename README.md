@@ -32,7 +32,7 @@ The user has the ability to curate a personal collection of movies with movie 'v
 
 ## Best Snippets
 
-Our app fetches a third-party API for a movie database that gives users access to movies not already on FilmUp for them.  
+Our app fetches a third-party API for a movie database that gives users access to movies not already on FilmUp for them.  This allows FilmUp to conserve the storage of the app while still giving users the experience of being able to find any movie and add them to their vaults and review them.  
 
 ### How this works:
 
@@ -40,7 +40,8 @@ Our app fetches a third-party API for a movie database that gives users access t
 
 Here is the route that makes this possible:
 
-```router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
+```
+router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
   const errors = ["We couldn't find any movies that match your search"];
   const searchTerm = `%${req.body.query}%`;
   if (req.body.query) {
@@ -92,4 +93,5 @@ Here is the route that makes this possible:
   } else {
     res.redirect("/");
   }
-}));```
+}));
+```
