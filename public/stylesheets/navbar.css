@@ -38,8 +38,9 @@
 }
 
 .nav-button {
-    height: 30px;
-    margin: 0 5px;
+    height: 25px;
+    position: relative;
+    bottom: 2px;
     background-color: #409d69;
     color: #FFF;
     border-radius: 3px;
