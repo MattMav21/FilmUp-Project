@@ -50,8 +50,9 @@ block content
   div(class='review-collection')
     each review in movie.Reviews
       if review.content
+        //- div(class='rev-container')
         div(class='user')= user.dataValues.firstName
-        div(class='date')= String(review.updatedAt).slice(0, 16)
+        div(class='date')= (String(review.updatedAt).slice(0, 3) + ", " + String(review.updatedAt).slice(4, 16))
         div(class='review')= review.content
           div(class='review-buttons')
             form(class='edit' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/edit`)
