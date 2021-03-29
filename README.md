@@ -30,7 +30,7 @@ The user has the ability to curate a personal collection of movies with movie 'v
 ### Key Challenges
 * Implementation of AJAX (Asynchronous JavaScript and XML) code using internal API routes for deleting movies from vaults without prompting a page refresh.
 
-## Best Snippets
+## Best Snippet
 
 Our app fetches a third-party API for a movie database that gives users access to movies not already on FilmUp for them.  This allows FilmUp to conserve the storage of the app while still giving users the experience of being able to find any movie and add them to their vaults and review them.  
 
