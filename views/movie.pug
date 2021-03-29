@@ -51,7 +51,7 @@ block content
     each review in movie.Reviews
       if review.content
         div(class='user')= user.dataValues.firstName
-        div(class='date')= review.updatedAt
+        div(class='date')= String(review.updatedAt).slice(0, 16)
         div(class='review')= review.content
           div(class='review-buttons')
             form(class='edit' method="POST" action=`/movies/${movie.id}/reviews/${review.id}/edit`)
