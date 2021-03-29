@@ -1,7 +1,7 @@
 # FilmUp
 
 ## Description
-FilmUp is a web application inspired on GoodReads, but focused on movies instead of books. The application allows users search, collect and review movies.
+[FilmUp](https://filmup-project.herokuapp.com/) is a web application inspired on GoodReads, but focused on movies instead of books. The application allows users search, collect and review movies.
 
 ## Development environment configuration
 [Instructions on configuring development environment]
