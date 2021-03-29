@@ -60,10 +60,11 @@ router.post(/\/\d+/, requireAuth, asyncHandler(async (req, res) => {
         const vaultMovies = await db.VaultMovie.findAll({
         where: {
             vaultId: id
-        }
+        },
     })
-    console.log("THESE ARE OUR VAULT MOVIES ------>", vaultMovies)
-    await vaultMovies.destroy()
+    vaultMovies.forEach((movie) => {
+        movie.destroy()
+    })
     await vault.destroy()
     res.redirect('/vaults')
 }))
