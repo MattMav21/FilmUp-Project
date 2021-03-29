@@ -15,12 +15,19 @@ input:focus {
 }
 
 .mainContentContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.5fr 1.5fr 1;
+    display: flex;
+    /* grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1.5fr 1; */
     gap: 10px 10px;
     justify-items: center;
-    align-items: center;
+    align-items: stretch;
+    width: fit-content;
+    margin: 1rem auto;
+}
+
+.mainContentContainer_left {
+    display: flex;
+    flex-direction: column;
 }
 
 .description {
@@ -37,8 +44,6 @@ input:focus {
 }
 
 .recentlyAdded {
-    grid-column: 2 / 3;
-    grid-row: 1 / 4;
     text-align: center;
     border: thin solid #D8D8D8;
     border-radius: 2px;
