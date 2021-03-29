@@ -78,9 +78,6 @@ router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
         });
 
         newMoviesArray.splice(10);
-
-        // console.log("MOVIE ARRAY", newMoviesArray);
-
         return res.render('movies', { newMoviesArray, token: req.csrfToken() });
 
       } catch (err) {

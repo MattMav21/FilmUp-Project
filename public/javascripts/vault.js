@@ -15,7 +15,6 @@ const handleDelete = (vaultId, movieId) => {
                 throw res
             }
             const movieVar = document.querySelector(`#movieBlock-${movieId}`)
-            console.log(movieVar)
             movieContainer.removeChild(movieVar)
             // document.querySelector(`.movieBlock-${movieId}`).remove()
         } catch (err) {
@@ -29,7 +28,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     // const deleteButton = document.getElementById("delete-movie")
 
     // deleteButton.addEventListener("click", async (event) => {
-    //     console.log(event)
     //     handleDelete(event.target.id)
 
     // })
@@ -37,7 +35,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (deleteButtons) {
         deleteButtons.forEach((button) => {
-            console.log(button.dataset.vaultid)
             button.addEventListener("click", handleDelete(button.dataset.vaultid, button.dataset.movieid));
   });
 }
