@@ -25,6 +25,12 @@
     margin: 10px;
 }
 
+.moviedetails {
+  border: black solid .2rem;
+  padding: .6rem;
+  font-size: large;
+}
+
 .movieBlock form {
   align-self: center;
 }
@@ -100,13 +106,9 @@
   border-bottom: 1px solid #ddd;
 }
 
-/* .moviedetails {
-} */
-
 #movietitle {
   width: auto;
-  margin-bottom: 0
-
+  margin-bottom: 0;
 }
 
 .watchedsection {
