@@ -6,7 +6,7 @@ module.exports = {
   development: {
     username,
     password,
-    database: 'filmup_database',
+    database,
     host,
     dialect: 'postgres',
     seederStorage: 'sequelize',

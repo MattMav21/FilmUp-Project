@@ -102,6 +102,7 @@ router.post('/:id/vaulted', requireAuth, csrfProtection, asyncHandler(async (req
 
 }))
 
+// ROUTE TO SEARCH FOR MOVIES AND QUERY EXTERNAL API
 router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
   const errors = ["We couldn't find any movies that match your search"];
   const searchTerm = `%${req.body.query}%`;

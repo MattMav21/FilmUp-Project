@@ -7,6 +7,7 @@ const { loginUser } = require('../auth');
 
 const router = express.Router();
 
+//user validators
 const userValidators = [
     check('email')
         .exists({ checkFalsy: true })
@@ -15,6 +16,7 @@ const userValidators = [
         .withMessage('Email must not exceed 100 characters.')
         .isEmail()
         .withMessage('Please provide a valid email address.')
+        // unique email w/ message "Email is already taken"
         ,
     check('password')
         .exists({ checkFalsy: true })
