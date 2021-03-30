@@ -41,13 +41,22 @@ router.delete('/:id', requireAuth, asyncHandler(async (req, res) => {
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
     // We want a route for when a user creates a vault
     const user = await db.User.findOne({ where: { id: req.session.auth.userId } });
-    // TODO: Find a way to count how many vaults are associated with a user
-    const vault = db.Vault.build({
-        name: req.body.name,
-        userId: user.id
-    })
-    await vault.save()
-    res.redirect('/vaults')
+    // We find how many vaults are associated with the current user
+    const userVaults = await db.Vault.findAll({ where: { userId: req.session.auth.userId } })
+    const vaults = await db.Vault.findAll({ where: { userId: req.session.auth.userId } })
+    console.log("OUR USER VAULTS =====>", userVaults)
+    console.log("OUR USER VAULTS LENGTH =====>", userVaults.length)
+    // if the user has 10 vaults, we want to tell them they can't add anymore and redirect to the vaults page
+    if (userVaults.length < 10) {
+        console.log("-------------HITTING THE IF STATEMENT----------")
+        const vault = db.Vault.build({
+            name: req.body.name,
+            userId: user.id
+        })
+        await vault.save()
+        res.redirect('/vaults')        
+    }
+    res.render('vaults', { userVaults, vaults })
 }))
 
 router.post(/\/\d+/, requireAuth, asyncHandler(async (req, res) => {

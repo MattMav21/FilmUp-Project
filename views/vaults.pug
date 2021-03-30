@@ -7,6 +7,8 @@ block content
             input(type="text" name="name" placeholder="Vault name here" id="vaultInput" required)
             div.vaultSpace
             button(type="submit" id="createVault") Create Vault
+            if userVaults
+                h2 You have the max amount of vaults
     h1 My Vaults
     div.vaultContainer
         each vault in vaults
