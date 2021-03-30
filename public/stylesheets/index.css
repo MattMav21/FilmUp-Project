@@ -159,6 +159,7 @@ footer {
         "siteLinks connectWithUs"
         "small small";
     align-items: start;
+    margin-bottom: 1rem;
 }
 
 footer .siteLinks, footer .connectWithUs {
@@ -185,6 +186,7 @@ footer .connectWithUs {
 
 .connectWithUs {
     justify-self: left;
+    height: 100%;
 }
 
 .connectWithUs .connectWithUs-github {
@@ -198,8 +200,27 @@ footer h3 {
     text-transform: uppercase;
 }
 
-.connectWithUs h3 {
+.connectWithUs-h3 {
     grid-area: connect;
+}
+
+.connectWithUs_logos {
+    display: flex;
+    justify-content: space-around;
+}
+
+.connectWithUs_logos i {
+    font-size: 1.2rem;
+}
+
+.connectWithUs_logos i:hover {
+    color: #409D69;
+    transform: scale(1.2);
+}
+
+.connectWithUs > .connectWithUsLinks_person + .connectWithUsLinks_person {
+    padding-left: 5px;
+    border-left: 1px solid #bbb;
 }
 
 small {
