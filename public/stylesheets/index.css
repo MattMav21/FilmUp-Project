@@ -159,7 +159,9 @@ footer {
         "siteLinks connectWithUs"
         "small small";
     align-items: start;
-    margin-bottom: 1rem;
+    background-color: rgb(243, 241, 235);
+    color: rgb(53, 34, 19);
+    padding: 1rem;
 }
 
 footer .siteLinks, footer .connectWithUs {
