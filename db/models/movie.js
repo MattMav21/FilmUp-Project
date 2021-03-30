@@ -23,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Movie.associate = function (models) {
-    // associations can be defined here
     Movie.belongsToMany(models.User, { foreignKey: 'movieId', through: 'WatchedMovies', otherKey: 'userId' })
     Movie.belongsTo(models.Genre, { foreignKey: 'genreId' })
     Movie.belongsToMany(models.Vault, { foreignKey: 'movieId', through: 'VaultMovies', otherKey: 'vaultId' })

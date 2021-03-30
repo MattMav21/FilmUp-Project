@@ -16,7 +16,6 @@ const handleDelete = (vaultId, movieId) => {
             }
             const movieVar = document.querySelector(`#movieBlock-${movieId}`)
             movieContainer.removeChild(movieVar)
-            // document.querySelector(`.movieBlock-${movieId}`).remove()
         } catch (err) {
             console.error(err)
         }
@@ -25,12 +24,6 @@ const handleDelete = (vaultId, movieId) => {
 
 
 document.addEventListener("DOMContentLoaded", async () => {
-    // const deleteButton = document.getElementById("delete-movie")
-
-    // deleteButton.addEventListener("click", async (event) => {
-    //     handleDelete(event.target.id)
-
-    // })
     const deleteButtons = document.querySelectorAll("#delete-movie");
 
     if (deleteButtons) {
