@@ -18,7 +18,6 @@ router.get('/genre/:id', csrfProtection, asyncHandler(async (req, res) => {
   const movies = await db.Movie.findAll({
     include: db.Genre, where: { genreId }
   });
-  console.log(movies[0]);
   res.render('movies', { movies, token: req.csrfToken() });
 }));
 
@@ -141,8 +140,6 @@ router.post("/search", csrfProtection, asyncHandler(async (req, res) => {
         });
 
         newMoviesArray.splice(10);
-
-        // console.log("MOVIE ARRAY", newMoviesArray);
 
         return res.render('movies', { newMoviesArray, token: req.csrfToken() });
 

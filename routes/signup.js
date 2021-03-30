@@ -21,9 +21,6 @@ const userValidators = [
     check('password')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a password.'),
-        // Special Characters
-        //.matches(characters users must include)
-        //.withMessage('Password must contain ???')
     check('confirmPassword')
         .exists({ checkFalsy: true })
         .withMessage('Please confirm your password.')
@@ -67,7 +64,6 @@ router.post('/', csrfProtection, userValidators, asyncHandler(async(req, res) =>
         const hashedPassword = await bcrypt.hash(password, 10);
         user.hashedPassword = hashedPassword;
         await user.save();
-        // console.log(user)
         await db.Vault.create({
             name: 'My Vault',
             userId: user.id

@@ -45,43 +45,49 @@
 .date {
     position: relative;
     top: 10px;
+    left: 277px;
 }
 
 .user {
     position: relative;
-    top: 20px;
+    top: 25px;
+    left: 276.5px;
 }
 
 
 .review {
     width: 50%;
+    margin: auto;
     overflow-wrap: break-word;
     background-color:rgb(243, 241, 235);
     border: 1px solid black;
     /* display: flex; */
     padding: 20px 5px 0 5px;
-    margin: 0 0 25px 0;
     /* align-items: center; */
     font-family: 14px "Lato", "Helvetica Neue", "Helvetica", sans-serif;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 50px;
     /* justify-content: flex-end; */
 }
 
 .review-buttons {
+    /* margin: auto; */
     display: flex;
     position: relative;
-    top: 23px;
+    top: 25px;
+    right: 6px;
     justify-content: flex-start;
     justify-content: space-between;
-    width: 120px;
+    width: 100px;
+    /* margin-bottom: 30px; */
 }
 
 .edit-button {
     /* position: relative; */
     border-radius: 3px;
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: green;
+    background-color: #409d69;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -90,7 +96,7 @@
 .delete-button {
     border-radius: 3px;
     font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: red;
+    background-color: #9d4040;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -116,3 +122,7 @@
     flex-direction: row;
     justify-content: space-between;
 }
+
+/* .rev-container {
+    margin: auto;
+} */
