@@ -6,8 +6,13 @@ mixin validationErrorSummary(errors)
                 each error in errors
                     li= error
 
-mixin connectWithUsLinks(gitHubLink, personName)
-    div: a(href=gitHubLink): img(class="connectWithUs-github" src="/images/githubicon.png", alt=personName)
+mixin connectWithUsLinks(gitHubLink, linkedinLink, angellistLink, personName)
+    div(class='connectWithUsLinks_person')
+        h3=personName
+        div(class='connectWithUs_logos')
+            div: a(href=linkedinLink): i(class='fab fa-linkedin')
+            div: a(href=gitHubLink): i(class='fab fa-github')
+            div: a(href=angellistLink): i(class='fab fa-angellist')
 
 mixin formField(labelText, fieldName, fieldPlaceholder = null, fieldType = 'text')
     label(for=fieldName)= labelText

@@ -3,26 +3,4 @@ document.addEventListener("DOMContentLoaded", async () => {
   const movieIdInput = document.getElementById('movieId')
   const watchedSpan = document.getElementById('watched')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 })
