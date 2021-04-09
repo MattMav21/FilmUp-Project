@@ -51,7 +51,7 @@ block content
     each review in movie.Reviews
       if review.content
         //- div(class='rev-container')
-        div(class='user')= user.dataValues.firstName
+        div(class='user')= movie.Users.filter(e => e.dataValues.id === review.userId).map((e) => e.dataValues.firstName)
         div(class='date')= (String(review.updatedAt).slice(0, 3) + ", " + String(review.updatedAt).slice(4, 16))
         div(class='review')= review.content
           div(class='review-buttons')
