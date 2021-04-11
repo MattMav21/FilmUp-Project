@@ -7,10 +7,10 @@ const { asyncHandler, csrfProtection } = require('./utils');
 const { requireAuth } = require('../auth');
 const { movieDbApiKey } = require('../config');
 
-router.get('/', asyncHandler(async (req, res) => {
+router.get('/', csrfProtection, asyncHandler(async (req, res) => {
   const movies = await db.Movie.findAll()
 
-  res.render('movies', { movies })
+  res.render('movies', { movies, token: req.csrfToken() })
 }));
 
 router.get('/genre/:id', csrfProtection, asyncHandler(async (req, res) => {
@@ -23,12 +23,23 @@ router.get('/genre/:id', csrfProtection, asyncHandler(async (req, res) => {
 
 router.get('/:id', csrfProtection, asyncHandler(async (req, res) => {
   const id = req.params.id
-  const movie = await db.Movie.findByPk(id, { include: [db.Genre, { model: db.WatchedMovie, as: 'Reviews' }] })
+  const movie = await db.Movie.findByPk(id, { include: [db.Genre, db.User, { model: db.WatchedMovie, as: 'Reviews' }] })
+  const users = movie.Users;
 
+  const userObjects = users.map(data => data.toJSON());
+
+  // console.log("OBJ", userObjects)
+
+
+  
   if (res.locals.authenticated) {
-    const watched = await db.WatchedMovie.findOne({ where: { movieId: id, userId: req.session.auth.userId } })
+    const watched = await db.WatchedMovie.findOne({ where: { movieId: id } })
     const vaults = await db.Vault.findAll({ where: { userId: req.session.auth.userId } })
-    res.render('movie', { movie, vaults, watched, token: req.csrfToken() })
+    let correctUser = userObjects.filter((obj) => obj.id === watched.userId)
+    let correctFirst = correctUser.map((corr) => corr.firstName)
+    console.log(correctFirst)
+
+    res.render('movie', { movie, vaults, watched, correctFirst, token: req.csrfToken() })
   } else {
     res.render('movie', { movie })
   }
