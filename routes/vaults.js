@@ -35,21 +35,35 @@ router.delete('/:id', requireAuth, asyncHandler(async (req, res) => {
 
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
     const user = await db.User.findOne({ where: { id: req.session.auth.userId } });
-    const vault = db.Vault.build({
-        name: req.body.name,
-        userId: user.id
-    })
-    await vault.save()
-    res.redirect('/vaults')
+    // We find how many vaults are associated with the current user
+    const userVaults = await db.Vault.findAll({ where: { userId: req.session.auth.userId } })
+    const vaults = await db.Vault.findAll({ where: { userId: req.session.auth.userId } })
+    // if the user has 10 vaults, we want to tell them they can't add anymore and redirect to the vaults page
+    if (userVaults.length < 10) {
+        const vault = db.Vault.build({
+            name: req.body.name,
+            userId: user.id
+        })
+        await vault.save()
+        res.redirect('/vaults')        
+    }
+    res.render('vaults', { userVaults, vaults })
 }))
 
 router.post(/\/\d+/, requireAuth, asyncHandler(async (req, res) => {
     const id = req.path.split('/')[1]
-
         const vault = await db.Vault.findOne({
         where: {
             id: id
         },
+    })
+        const vaultMovies = await db.VaultMovie.findAll({
+        where: {
+            vaultId: id
+        },
+    })
+    vaultMovies.forEach((movie) => {
+        movie.destroy()
     })
     await vault.destroy()
     res.redirect('/vaults')
