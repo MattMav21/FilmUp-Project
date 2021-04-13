@@ -1,5 +1,9 @@
 # FilmUp
 
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/63423828/114615247-0f79b400-9c6b-11eb-9b0f-3ee0afe99d60.gif" alt="FilmUp" />
+</p>
+
 ## Description
 [FilmUp](https://filmup-project.herokuapp.com/) is a web application inspired on GoodReads, but focused on movies instead of books. The application allows users search, collect and review movies.
 
